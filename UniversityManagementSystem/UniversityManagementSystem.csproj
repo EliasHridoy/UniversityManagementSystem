@@ -162,20 +162,25 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SaveCourseController.cs" />
+    <Compile Include="Controllers\SaveTeacherController.cs" />
     <Compile Include="Controllers\ViewDepartmentController.cs" />
     <Compile Include="Gateway\CommonGateway.cs" />
     <Compile Include="Gateway\DepartmentGateway.cs" />
     <Compile Include="Gateway\SaveCourseGateway.cs" />
+    <Compile Include="Gateway\SaveTeacherGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manger\DepartmentManager.cs" />
     <Compile Include="Manger\SaveCourseManager.cs" />
+    <Compile Include="Manger\SaveTeacherManager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\SaveCourse.cs" />
-    <Compile Include="Models\Semester.cs" />
+    <Compile Include="Models\SaveTeacher.cs" />
+    <Compile Include="Models\ViewModel\DesignationModel.cs" />
+    <Compile Include="Models\ViewModel\Semester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -228,6 +233,7 @@
     <Content Include="Views\Department\Save.cshtml" />
     <Content Include="Views\ViewDepartment\ViewAllDepartment.cshtml" />
     <Content Include="Views\SaveCourse\Save.cshtml" />
+    <Content Include="Views\SaveTeacher\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
