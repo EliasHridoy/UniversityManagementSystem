@@ -1,0 +1,71 @@
+﻿@using UniversityManagementSystem.Models
+@model Department
+
+@{
+    Layout = null;
+    string message = ViewBag.message;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Save</title>
+</head>
+<body>
+<div>
+    
+
+
+    @using (Html.BeginForm("Save", "Department", FormMethod.Post, new {id = "DepartmentForm", Class = ""}))
+    {
+        <table>
+
+            <tr>
+
+                <td>
+                    @Html.LabelFor(x => x.Code)
+                </td>
+
+                <td>
+                    @Html.TextBoxFor(x => x.Code)
+                    @Html.ValidationMessageFor(x=>x.Code)
+                </td>
+
+            </tr>
+            <tr>
+
+                <td>
+                    @Html.LabelFor(x => x.Name)
+                </td>
+
+                <td>
+                    @Html.TextBoxFor(x => x.Name)
+                    @Html.ValidationMessageFor(x=>x.Name)
+                </td>
+
+            </tr>
+
+            <tr>
+           <td></td>
+                <td>
+                    <input type="submit" value="Save"/>
+                </td>
+                <td>
+                    @if (message != null)
+                    {
+                        @Html.Label(@message)
+
+                    }
+                </td>
+
+            </tr>
+
+        </table>
+
+    }
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿@using System.ServiceModel.Channels
+@using UniversityManagementSystem.Models
+@model SaveCourse
+@{
+    Layout = null;
+
+    List<Department> departments = ViewBag.departments;
+    List<Semester> semesters = ViewBag.semesters;
+    string message = ViewBag.message;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Save</title>
+</head>
+<body>
+<div>
+
+
+    @using (@Html.BeginForm(new { id = "SaveCourseForm" }))
+{
+
+
+    <table>
+        <tr>
+            <td>@Html.LabelFor(x=>x.Code)</td>
+            <td>@Html.TextBoxFor(x=>x.Code)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.Name)</td>
+            <td>@Html.TextBoxFor(x => x.Name)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.Credit)</td>
+            <td>@Html.TextBoxFor(x => x.Credit)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.Description)</td>
+            <td>@Html.TextBoxFor(x => x.Description)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("DepartmentID")</td>
+            <td>@Html.DropDownList("DepartmentID", new SelectList(departments,"Id","Code"))</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("SemesterID")</td>
+            <td>@Html.DropDownList("SemesterID", new SelectList(semesters, "Id", "Name"), "--Select--")</td>
+             </tr>
+        <tr>
+            <td>
+                @if (message != null)
+                {
+                    @Html.Label(@message)
+                }
+            </td>
+            <td>
+                <input type="submit" value="Save"/>
+            </td>
+        </tr>
+    </table>
+
+    }
+
+
+</div>
+</body>
+</html>
