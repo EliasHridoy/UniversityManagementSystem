@@ -14,13 +14,13 @@ namespace UniversityManagementSystem.Gateway
 
 
 
-        public List<Department> ViewAllDepartment()
+        public List<DepartmentModel> ViewAllDepartment()
         {
             query = "SELECT * FROM DepartmentTable";
 
             Command = new SqlCommand(query, Connection);
            
-            List<Department> departments = new List<Department>();
+            List<DepartmentModel> departments = new List<DepartmentModel>();
 
             Connection.Open();
            
@@ -28,7 +28,7 @@ namespace UniversityManagementSystem.Gateway
 
             while (Reader.Read())
             {
-                Department department = new Department();
+                DepartmentModel department = new DepartmentModel();
                 department.Code = Reader["Code"].ToString();
                 department.Name = Reader["Name"].ToString();
 
@@ -43,7 +43,7 @@ namespace UniversityManagementSystem.Gateway
 
 
 
-        public int Save(Department department)
+        public int Save(DepartmentModel department)
         {
             query = "INSERT INTO DepartmentTable VALUES(@Code,@Name)";
             Command = new SqlCommand(query,Connection);
@@ -57,7 +57,7 @@ namespace UniversityManagementSystem.Gateway
             return rowEffect;
         }
 
-        public bool IsCodeExists(Department department)
+        public bool IsCodeExists(DepartmentModel department)
         {
             query = "SELECT * FROM DepartmentTable WHERE Code=@Code";
             
@@ -71,7 +71,7 @@ namespace UniversityManagementSystem.Gateway
             return hasRows;
 
         }
-        public bool IsNameExists(Department department)
+        public bool IsNameExists(DepartmentModel department)
         {
             query = "SELECT * FROM DepartmentTable WHERE Name=@Name";
             

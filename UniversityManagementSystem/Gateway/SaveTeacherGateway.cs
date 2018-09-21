@@ -13,7 +13,7 @@ namespace UniversityManagementSystem.Gateway
 
 
 
-        public int Save(SaveTeacher teacher)
+        public int Save(SaveTeacherModel teacher)
         {
             query = "INSERT INTO TeacherTable VALUES(@Name,@Address,@Email,@ContactNo,@DesignationId,@DepartmentID,@Credit)";
             Command = new SqlCommand(query, Connection);
@@ -33,13 +33,13 @@ namespace UniversityManagementSystem.Gateway
         }
 
 
-        public List<Department> DepartmentDropDownlist()
+        public List<DepartmentModel> DepartmentDropDownlist()
         {
             query = "SELECT * FROM DepartmentTable";
 
             Command = new SqlCommand(query, Connection);
 
-            List<Department> departments = new List<Department>();
+            List<DepartmentModel> departments = new List<DepartmentModel>();
 
             Connection.Open();
 
@@ -47,7 +47,7 @@ namespace UniversityManagementSystem.Gateway
 
             while (Reader.Read())
             {
-                Department department = new Department();
+                DepartmentModel department = new DepartmentModel();
                 department.Id = Convert.ToInt32(Reader["Id"]);
                 department.Code = Reader["Code"].ToString();
                 department.Name = Reader["Name"].ToString();
@@ -58,13 +58,13 @@ namespace UniversityManagementSystem.Gateway
             Connection.Close();
             return departments;
         }
-        public List<DesignationModel> DesignationDropDownList()
+        public List<DesignationViewModel> DesignationDropDownList()
         {
             query = "SELECT * FROM DesignationTable";
 
             Command = new SqlCommand(query, Connection);
 
-            List<DesignationModel> designations = new List<DesignationModel>();
+            List<DesignationViewModel> designations = new List<DesignationViewModel>();
 
             Connection.Open();
 
@@ -72,7 +72,7 @@ namespace UniversityManagementSystem.Gateway
 
             while (Reader.Read())
             {
-                DesignationModel designation = new DesignationModel();
+                DesignationViewModel designation = new DesignationViewModel();
                 designation.Id = Convert.ToInt32(Reader["Id"]);
                 designation.Name = Reader["Designation"].ToString();
 

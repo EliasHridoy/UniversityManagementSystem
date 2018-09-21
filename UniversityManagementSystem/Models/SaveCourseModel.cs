@@ -5,7 +5,7 @@ using System.Web;
 
 namespace UniversityManagementSystem.Models
 {
-    public class SaveCourse
+    public class SaveCourseModel
     {
         public string Code { get; set; }
         public string Name { get; set; }

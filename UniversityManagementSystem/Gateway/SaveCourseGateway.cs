@@ -11,7 +11,7 @@ namespace UniversityManagementSystem.Gateway
     {
 
 
-        public int Save(SaveCourse course)
+        public int Save(SaveCourseModel course)
         {
             query = "INSERT INTO SaveCoursesTable VALUES(@Code,@Name,@Credit,@Description,@DepartmentID,@SemesterID)";
             Command = new SqlCommand(query,Connection);
@@ -34,13 +34,13 @@ namespace UniversityManagementSystem.Gateway
 
 
 
-        public List<Department> DepartmentDropDownlist()
+        public List<DepartmentModel> DepartmentDropDownlist()
         {
             query = "SELECT * FROM DepartmentTable";
 
             Command = new SqlCommand(query, Connection);
 
-            List<Department> departments = new List<Department>();
+            List<DepartmentModel> departments = new List<DepartmentModel>();
 
             Connection.Open();
 
@@ -48,7 +48,7 @@ namespace UniversityManagementSystem.Gateway
 
             while (Reader.Read())
             {
-                Department department = new Department();
+                DepartmentModel department = new DepartmentModel();
                 department.Id = Convert.ToInt32(Reader["Id"]);
                 department.Code = Reader["Code"].ToString();
                 department.Name = Reader["Name"].ToString();

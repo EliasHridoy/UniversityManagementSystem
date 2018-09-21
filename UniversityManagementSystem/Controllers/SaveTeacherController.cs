@@ -33,7 +33,7 @@ namespace UniversityManagementSystem.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Save(SaveTeacher teacher)
+        public ActionResult Save(SaveTeacherModel teacher)
         {
 
 

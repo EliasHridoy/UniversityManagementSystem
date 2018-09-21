@@ -6,7 +6,7 @@ using System.Web;
 
 namespace UniversityManagementSystem.Models
 {
-    public class Department
+    public class DepartmentModel
     {
 
         public int Id { get; set; }

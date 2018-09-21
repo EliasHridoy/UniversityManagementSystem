@@ -31,7 +31,7 @@ namespace UniversityManagementSystem.Controllers
         } 
         
         [HttpPost]
-        public ActionResult Save(SaveCourse course)
+        public ActionResult Save(SaveCourseModel course)
         {
 
             ViewBag.departments = saveCourseManager.DepartmentDropDownlist();

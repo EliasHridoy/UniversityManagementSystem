@@ -20,7 +20,7 @@ namespace UniversityManagementSystem.Controllers
         }
         public ActionResult ViewAllDepartment()
         {
-            List<Department> departments = departmentManager.ViewAllDepartment();
+            List<DepartmentModel> departments = departmentManager.ViewAllDepartment();
             ViewBag.departments = departments;
             return View();
         }

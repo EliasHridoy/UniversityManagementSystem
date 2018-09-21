@@ -19,7 +19,7 @@ namespace UniversityManagementSystem.Manger
 
 
 
-        public string Save(SaveTeacher teacher)
+        public string Save(SaveTeacherModel teacher)
         {
             int rowEffect = saveTeacherGateway.Save(teacher);
 
@@ -33,12 +33,12 @@ namespace UniversityManagementSystem.Manger
             }
         }
 
-         public List<Department> DepartmentDropDownlist()
+         public List<DepartmentModel> DepartmentDropDownlist()
          {
              return saveTeacherGateway.DepartmentDropDownlist();
          }
 
-         public List<DesignationModel> DesignationDropDownList()
+         public List<DesignationViewModel> DesignationDropDownList()
          {
 
              return saveTeacherGateway.DesignationDropDownList();

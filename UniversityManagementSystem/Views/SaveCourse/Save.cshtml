@@ -1,10 +1,10 @@
 ﻿@using System.ServiceModel.Channels
 @using UniversityManagementSystem.Models
-@model SaveCourse
+@model SaveCourseModel
 @{
     Layout = null;
 
-    List<Department> departments = ViewBag.departments;
+    List<DepartmentModel> departments = ViewBag.departments;
     List<Semester> semesters = ViewBag.semesters;
     string message = ViewBag.message;
 }

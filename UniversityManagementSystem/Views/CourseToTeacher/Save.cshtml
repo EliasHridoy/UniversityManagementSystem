@@ -1,0 +1,123 @@
+﻿@using System.ServiceModel.Channels
+@using UniversityManagementSystem.Models
+@model CourseToTeacherModel
+    @{
+        Layout = null;
+
+        List<DepartmentModel> departments = ViewBag.departments;
+        List<Semester> semesters = ViewBag.semesters;
+        string message = ViewBag.message;
+    }
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Save</title>
+    </head>
+    <body>
+        <div>
+
+            @using (@Html.BeginForm(new { id = "SaveCourseForm" }))
+            {
+
+
+                <table>
+
+                    <tr>
+                        <td>@Html.Label("DepartmentID")</td>
+                        <td>@Html.DropDownList("DepartmentID", new SelectList(departments, "Id", "Code"))</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("TeacherId")</td>
+                        <td>@Html.DropDownList("TeacherId", new SelectList(departments, "Id", "Code"))</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Credit")</td>
+                        <td>@Html.TextBox("Credit")</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("RemainigCredit")</td>
+                        <td>@Html.TextBox("RemainigCredit")</td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.Label("CourseId")</td>
+                        <td>@Html.DropDownList("CourseId", new SelectList(semesters, "Id", "Name"), "--Select--")</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Name")</td>
+                        <td>@Html.TextBox("Name")</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Credit")</td>
+                        <td>@Html.TextBox("Credit")</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td>
+                            @if (message != null)
+                            {
+                                @Html.Label(@message)
+                            }
+                        </td>
+                        <td>
+                            <input type="submit" value="Assign" />
+                        </td>
+                    </tr>
+                </table>
+
+            }
+
+
+
+
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script>
+            $(document).ready(function () {
+
+                $('#DepartmentId').change(function () {
+
+                    var departmentId = $('#DepartmentId').val();
+
+                    var json = { deptId: departmentId };
+
+                    $.ajax({
+
+                        type: "POST",
+
+                        url: '@Url.Action("GetStudentsByDepartmentId", "Student")',
+                        //url: '/Department/GetStudentsByDepartmentId',
+
+                        contentType: "application/json; charset=utf-8",
+
+                        data: JSON.stringify(json),
+
+                        success: function (data) {
+
+
+                            //$("#StudentDetails").empty();
+                            $("#StudentId").empty();
+                            $("#StudentId").append('<option value="">--Select--</option>');
+
+
+
+                            $.each(data, function (key, value) {
+
+                                $("#StudentId").append('<option value=' + value.StudentId + '>' + value.StudentName + '</option>');
+                                //$("#StudentDetails").append('<tr> <td>'+value.StudentName+'</td>   <td>'+value.Address+'</td>   <td>'+value.DepartmentName+'</td></tr>');
+
+                            });
+
+                        }
+                    });
+
+                });
+            });
+            </script>
+
+        </div>
+    </body>
+</html>

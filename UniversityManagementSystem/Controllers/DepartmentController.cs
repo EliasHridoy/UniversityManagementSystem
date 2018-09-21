@@ -25,7 +25,7 @@ namespace UniversityManagementSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(Department department)
+        public ActionResult Save(DepartmentModel department)
         {
             if (department.Code.Length >= 2 && department.Code.Length <= 7)
             {

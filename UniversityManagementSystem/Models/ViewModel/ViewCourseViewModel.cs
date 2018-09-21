@@ -5,10 +5,12 @@ using System.Web;
 
 namespace UniversityManagementSystem.Models.ViewModel
 {
-    public class DesignationModel
+    public class ViewCourseViewModel
     {
-        public int Id { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
 
+        public string Semester { get; set; }
+        public string AssignedTo { get; set; }
     }
 }

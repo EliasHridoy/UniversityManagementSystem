@@ -18,7 +18,7 @@ namespace UniversityManagementSystem.Manger
 
 
         
-     public List<Department> ViewAllDepartment()
+     public List<DepartmentModel> ViewAllDepartment()
      {
          return departmentGateway.ViewAllDepartment();
      }
@@ -30,7 +30,7 @@ namespace UniversityManagementSystem.Manger
             departmentGateway = new DepartmentGateway();
         }
 
-        public string Save(Department department)
+        public string Save(DepartmentModel department)
         {
             int rowEffect = departmentGateway.Save(department);
             if (rowEffect > 0)
@@ -45,12 +45,12 @@ namespace UniversityManagementSystem.Manger
         }
 
 
-        public bool IsCodeExists(Department department)
+        public bool IsCodeExists(DepartmentModel department)
         {
             return departmentGateway.IsCodeExists(department);
         }
 
-        public bool IsNameExists(Department department)
+        public bool IsNameExists(DepartmentModel department)
         {
             return departmentGateway.IsNameExists(department);
         }

@@ -17,7 +17,7 @@ namespace UniversityManagementSystem.Manger
         }
 
 
-        public string Save(SaveCourse course)
+        public string Save(SaveCourseModel course)
         {
             int rowEffect = saveCourseGateway.Save(course);
 
@@ -33,7 +33,7 @@ namespace UniversityManagementSystem.Manger
         }
 
 
-        public List<Department> DepartmentDropDownlist()
+        public List<DepartmentModel> DepartmentDropDownlist()
         {
             return saveCourseGateway.DepartmentDropDownlist();
         }
