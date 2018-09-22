@@ -1,8 +1,10 @@
-﻿@using UniversityManagementSystem.Models.ViewModel
+﻿@using UniversityManagementSystem.Models
+@using UniversityManagementSystem.Models.ViewModel
 @model ViewCourseViewModel
 
 @{
     Layout = null;
+    List<DepartmentModel> departments = ViewBag.departments;
 }
 
 <!DOCTYPE html>
@@ -13,9 +15,79 @@
     <title>ViewCourse</title>
 </head>
 <body>
-<div>
+    <div>
+        <table align="center">
+        <tr>
+            <td>
+                @Html.DropDownList("DepartmentId", new SelectList(departments, "Id", "Code"), "--Select--", "")
+            </td>
+        </tr>
+
+        </table>
+        
+        <table border="1" align="center">
+            <thead>
+                <tr>
+                    <td>Code</td>
+                    <td>Name</td>
+                    <td>Semester</td>
+                    <td>Assigned To</td>
+                </tr>
+            </thead>
+            <tbody id="CourseDetails"></tbody>
+        </table>
 
 
-</div>
+
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script>
+            $(document).ready(function () {
+
+                $('#DepartmentId').change(function () {
+
+                    var departmentId = $('#DepartmentId').val();
+
+                    var json = { departmentId: departmentId };
+
+                    $.ajax({
+                        type: "POST",
+
+                        url: '@Url.Action("GetCoursesByDepartmentId", "ViewCourseStatics")',
+                        //url: '/ViewCourse/ViewCourseStatics',
+
+                        contentType: "application/json; charset=utf-8",
+
+                        data: JSON.stringify(json),
+
+                        success: function (data) {
+
+
+                            //$("#StudentDetails").empty();
+                            $("#CourseDetails").empty();
+                            // $("#CourseDetails").append('<option value="">--Select--</option>');
+
+
+                            $.each(data, function (key, value) {
+
+                                // $("#CourseDetails").append('<option value=' + value.StudentId + '>' + value.StudentName + '</option>');
+                                $("#CourseDetails").append('<tr> <td> ' + value.Code + ' </td> <td>' + value.Name + '</td>   <td>' + value.Semester + '</td>   <td>' + value.AssignedTo + '</td></tr>')
+                            });
+
+                        }
+
+
+                    });
+                });
+
+            });
+
+        </script>
+
+
+
+
+
+    </div>
 </body>
 </html>

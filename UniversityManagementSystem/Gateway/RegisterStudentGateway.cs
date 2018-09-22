@@ -94,9 +94,9 @@ namespace UniversityManagementSystemApp.Gateway
             while (Reader.Read())
             {
                 DepartmentModel department = new DepartmentModel();
-                
-                    department.Id = Convert.ToInt32(Reader["Id"]),
-                    department.Code = Reader["Code"].ToString()
+
+                department.Id = Convert.ToInt32(Reader["Id"]);
+                department.Code = Reader["Code"].ToString();
                 
                 departmentList.Add(department);
             }

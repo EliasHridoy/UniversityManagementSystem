@@ -38,6 +38,8 @@ namespace UniversityManagementSystem.Gateway
             }
 
             Connection.Close();
+
+            return courseList;
         }
     }
 }

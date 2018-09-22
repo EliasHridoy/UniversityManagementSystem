@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AllocateClassroomController.cs" />
     <Compile Include="Controllers\CourseToTeacherController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Controllers\SaveTeacherController.cs" />
     <Compile Include="Controllers\ViewCourseStaticsController.cs" />
     <Compile Include="Controllers\ViewDepartmentController.cs" />
+    <Compile Include="Gateway\AllocateClassroomGateway.cs" />
     <Compile Include="Gateway\CommonGateway.cs" />
     <Compile Include="Gateway\CourseToTeacherGateway.cs" />
     <Compile Include="Gateway\DepartmentGateway.cs" />
@@ -177,6 +179,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Manger\AllocateClassroomManager.cs" />
     <Compile Include="Manger\CourseToTeacherManager.cs" />
     <Compile Include="Manger\DepartmentManager.cs" />
     <Compile Include="Manger\RegisterStudentManager.cs" />
@@ -184,12 +187,16 @@
     <Compile Include="Manger\SaveTeacherManager.cs" />
     <Compile Include="Manger\ViewCourseStaticsManager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ViewModel\CourseViewModel.cs" />
+    <Compile Include="Models\AllocateClassroomModel.cs" />
     <Compile Include="Models\CourseToTeacherModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RegisterStudent.cs" />
     <Compile Include="Models\SaveCourseModel.cs" />
     <Compile Include="Models\SaveTeacherModel.cs" />
+    <Compile Include="Models\ViewModel\DayViewModel.cs" />
+    <Compile Include="Models\ViewModel\RoomViewModel.cs" />
     <Compile Include="Models\ViewModel\DesignationViewModel.cs" />
     <Compile Include="Models\ViewModel\TeacherViewModel.cs" />
     <Compile Include="Models\ViewModel\SemesterViewModel.cs" />
@@ -250,6 +257,7 @@
     <Content Include="Views\CourseToTeacher\Save.cshtml" />
     <Content Include="Views\RegisterStudent\Save.cshtml" />
     <Content Include="Views\ViewCourseStatics\ViewCourse.cshtml" />
+    <Content Include="Views\AllocateClassroom\Allocate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

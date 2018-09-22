@@ -1,0 +1,136 @@
+﻿@using UniversityManagementSystem.Models
+@using UniversityManagementSystem.Models.ViewModel
+@model AllocateClassroomModel
+@{
+    Layout = null;
+
+    List<DepartmentModel> departments = ViewBag.departments;
+    List<DayViewModel> days = ViewBag.days;
+    List<RoomViewModel> rooms = ViewBag.rooms;
+    string message = ViewBag.message;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Allocate</title>
+</head>
+<body>
+<div>
+    <table>
+
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.DepartmentId)
+            </td>
+            <td>
+                @Html.DropDownList("DepartmentId", new SelectList(departments, "Id", "Code"), "--Select--", "")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.CourseId)
+            </td>
+            <td >
+                @Html.DropDownList("CourseDetails", new SelectList(""))
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.RoomId)
+            </td>
+            <td>
+                @Html.DropDownList("RoomId", new SelectList(rooms, "Id", "RoomNo"), "--Select--", "")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.DayId)
+            </td>
+            <td>
+                @Html.DropDownList("DayId", new SelectList(days, "Id", "Day"), "--Select--", "")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.FromTime)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.FromTime)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.ToTime)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.ToTime)
+            </td>
+        </tr>
+
+        <tr>
+            <td>@message</td>
+            <td>
+                <input type="submit" value="Allocate"/>
+            </td>
+        </tr>
+    </table>
+
+
+
+
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+            $(document).ready(function () {
+
+                $('#DepartmentId').change(function () {
+
+                    var departmentId = $('#DepartmentId').val();
+
+                    var json = { departmentId: departmentId };
+
+                    $.ajax({
+                        type: "POST",
+
+                        url: '@Url.Action("GetCoursesByDepartmentId", "AllocateClassroom")',
+                        //url: '/ViewCourse/ViewCourseStatics',
+
+                        contentType: "application/json; charset=utf-8",
+
+                        data: JSON.stringify(json),
+
+                        success: function (data) {
+
+
+                            //$("#StudentDetails").empty();
+                            $("#CourseDetails").empty();
+                             $("#CourseDetails").append('<option value="">--Select--</option>');
+
+
+                            $.each(data, function (key, value) {
+
+                                $("#CourseDetails").append('<option value=' + value.Id + '>' + value.Name + '</option>');
+                                //$("#CourseDetails").append('<tr> <td> ' + value.Code + ' </td> <td>' + value.Name + '</td>   <td>' + value.Semester + '</td>   <td>' + value.AssignedTo + '</td></tr>')
+                            });
+
+                        }
+
+
+                    });
+                });
+
+            });
+
+    </script>
+
+
+
+
+
+</div>
+</body>
+</html>

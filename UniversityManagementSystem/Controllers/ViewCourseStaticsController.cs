@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UniversityManagementSystem.Manger;
+using UniversityManagementSystem.Models.ViewModel;
 using UniversityManagementSystemApp.Mannager;
 
 namespace UniversityManagementSystem.Controllers
@@ -23,19 +24,27 @@ namespace UniversityManagementSystem.Controllers
         }
 
 
-        [HttpGet]
+        //[HttpGet]
         public ActionResult ViewCourse()
         {
             ViewBag.departments = registerStudentManager.GetDepartmentList();
             return View();
         }
-        [HttpPost]
-        public ActionResult ViewCourse(int departmentId)
-        {
-            ViewBag.departments = registerStudentManager.GetDepartmentList();
-            ViewBag.courseList = viewCourseStaticsManager.ViewCourse(departmentId);
+        //[HttpPost]
+        //public ActionResult ViewCourse(int departmentId)
+        //{
+        //    ViewBag.departments = registerStudentManager.GetDepartmentList();
+        //    ViewBag.courseList = viewCourseStaticsManager.ViewCourse(departmentId);
 
-            return View();
+        //    return View();
+        //}
+
+
+        public JsonResult GetCoursesByDepartmentId(int departmentID)
+        {
+            List<ViewCourseViewModel> courseDetails = viewCourseStaticsManager.ViewCourse(departmentID);
+            JsonResult jsonResult = Json(courseDetails);
+            return jsonResult;
         }
     }
 }
