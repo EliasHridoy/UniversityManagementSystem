@@ -25,6 +25,7 @@ namespace UniversityManagementSystem.Controllers
         }
 
         [HttpGet]
+
         public ActionResult Allocate()
         {
             ViewBag.departments = registerStudentManager.GetDepartmentList();
@@ -32,14 +33,24 @@ namespace UniversityManagementSystem.Controllers
             ViewBag.days = allocateClassroomManager.DayView();
             return View();
         }
+
         [HttpPost]
-        public ActionResult Allocate(AllocateClassroomModel allocateClassroomModel)
+
+        public ActionResult Allocate(AllocateClassroomModel allocateClass)
         {
             ViewBag.departments = registerStudentManager.GetDepartmentList();
             ViewBag.rooms = allocateClassroomManager.ViewRoom();
             ViewBag.days = allocateClassroomManager.DayView();
 
-            ViewBag.message = allocateClassroomManager.Allocate(allocateClassroomModel);
+            if (IsRoomFree(allocateClass.DayId, allocateClass.RoomId, allocateClass.FromTime, allocateClass.ToTime) ==
+                false)
+            {
+                ViewBag.message = allocateClassroomManager.Allocate(allocateClass);
+            }
+            else
+            {
+                ViewBag.message = "Room is not available";
+            }
 
             return View();
         }
@@ -51,5 +62,12 @@ namespace UniversityManagementSystem.Controllers
             JsonResult jsonResult = Json(courseDetails);
             return jsonResult;
         }
+
+
+        public bool IsRoomFree(int dayId, int roomId ,string fromTime, string toTime )
+        {
+            return allocateClassroomManager.IsRoomFree(dayId, roomId, fromTime, toTime);
+        }
+
 	}
 }

@@ -18,73 +18,77 @@
     <title>Allocate</title>
 </head>
 <body>
-<div>
-    <table>
-
-        <tr>
-            <td>
-                @Html.LabelFor(x => x.DepartmentId)
-            </td>
-            <td>
-                @Html.DropDownList("DepartmentId", new SelectList(departments, "Id", "Code"), "--Select--", "")
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(x => x.CourseId)
-            </td>
-            <td >
-                @Html.DropDownList("CourseDetails", new SelectList(""))
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(x => x.RoomId)
-            </td>
-            <td>
-                @Html.DropDownList("RoomId", new SelectList(rooms, "Id", "RoomNo"), "--Select--", "")
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(x => x.DayId)
-            </td>
-            <td>
-                @Html.DropDownList("DayId", new SelectList(days, "Id", "Day"), "--Select--", "")
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(x => x.FromTime)
-            </td>
-            <td>
-                @Html.TextBoxFor(x => x.FromTime)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(x => x.ToTime)
-            </td>
-            <td>
-                @Html.TextBoxFor(x => x.ToTime)
-            </td>
-        </tr>
-
-        <tr>
-            <td>@message</td>
-            <td>
-                <input type="submit" value="Allocate"/>
-            </td>
-        </tr>
-    </table>
+    <div>
 
 
 
 
+        @using(@Html.BeginForm()){
+        <table>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.DepartmentId)
+                </td>
+                <td>
+                    @Html.DropDownList("DepartmentId", new SelectList(departments, "Id", "Code"), "--Select--", "")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.CourseId)
+                </td>
+                <td>
+                    @Html.DropDownList("CourseId", new SelectList(""))
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.RoomId)
+                </td>
+                <td>
+                    @Html.DropDownList("RoomId", new SelectList(rooms, "Id", "RoomNo"), "--Select--", "")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.DayId)
+                </td>
+                <td>
+                    @Html.DropDownList("DayId", new SelectList(days, "Id", "Day"), "--Select--", "")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.FromTime)
+                </td>
+                <td>
+                    @*@Html.TextBoxFor(x => x.FromTime)*@
+                    <input type="time" name="FromTime" id="FromTime" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.ToTime)
+                </td>
+                <td>
+                    @*@Html.TextBoxFor(x => x.ToTime)*@
+                    <input type="time" name="ToTime" id="ToTime" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>@message</td>
+                <td>
+                    <input type="submit" value="Allocate" />
+                </td>
+            </tr>
+        </table>
+        }
 
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script>
             $(document).ready(function () {
 
                 $('#DepartmentId').change(function () {
@@ -107,13 +111,13 @@
 
 
                             //$("#StudentDetails").empty();
-                            $("#CourseDetails").empty();
-                             $("#CourseDetails").append('<option value="">--Select--</option>');
+                            $("#CourseId").empty();
+                            $("#CourseId").append('<option value="">--Select--</option>');
 
 
                             $.each(data, function (key, value) {
 
-                                $("#CourseDetails").append('<option value=' + value.Id + '>' + value.Name + '</option>');
+                                $("#CourseId").append('<option value=' + value.Id + '>' + value.Name + '</option>');
                                 //$("#CourseDetails").append('<tr> <td> ' + value.Code + ' </td> <td>' + value.Name + '</td>   <td>' + value.Semester + '</td>   <td>' + value.AssignedTo + '</td></tr>')
                             });
 
@@ -125,12 +129,12 @@
 
             });
 
-    </script>
+        </script>
 
 
 
 
 
-</div>
+    </div>
 </body>
 </html>

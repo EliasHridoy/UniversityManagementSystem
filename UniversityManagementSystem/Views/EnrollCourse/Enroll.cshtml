@@ -1,0 +1,141 @@
+﻿@using UniversityManagementSystem.Models.ViewModel
+@using UniversityManagementSystem.Models
+@model StudentCourseViewModel
+@{
+    Layout = null;
+    List<StudentCourseViewModel> RegNOs = ViewBag.studentRegNos;
+
+    List<EnrollCourseModel> courses = ViewBag.courses;
+
+    string message = ViewBag.message;
+    
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Enroll</title>
+</head>
+<body>
+<div>
+
+
+    @using (@Html.BeginForm())
+    {
+        <table>
+
+            <tr>
+                <td>@Html.Label("Student Reg. No.")</td>
+                <td>@Html.DropDownList("StudentId", new SelectList(RegNOs, "Id", "RegNo"), "--Select--")</td>
+                <td></td>
+            </tr>
+        </table>
+
+
+        <table id="studentDetails">
+            
+        </table>
+            
+
+            
+@*<tr>
+            <td>@Html.Label("Name")</td>
+            <td>@Html.TextBoxFor(x=>x.Name), readonly= "readonly" </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Email")</td>
+            <td>@Html.TextBoxFor(x=>x.Email), readonly= "readonly" </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Department")</td>
+            <td>@Html.TextBoxFor(x=>x.DepartmentName), readonly= "readonly" </td>
+                
+        </tr>*@
+
+        <table>
+            <tr>
+                <td>@Html.Label("Select Course")</td>
+                <td>
+                    @Html.DropDownList("CourseId", new SelectList(courses, "Id", "CourseName"), "--Select--")
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Date")</td>
+                <td>
+                    <input type="date" id="Date" name="Date" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>@message</td>
+                <td>
+                    <input type="submit" value="Enroll" />
+                </td>
+                <td></td>
+            </tr>
+            
+        </table>
+    }
+
+
+
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+            $(document).ready(function () {
+
+                $('#StudentId').change(function () {
+
+                    var StudentId = $('#StudentId').val();
+
+                    var json = { studentId: StudentId };
+
+                    $.ajax({
+                        type: "POST",
+
+                        url: '@Url.Action("studentById", "EnrollCourse")',
+                        //url: '/ViewCourse/ViewCourseStatics',
+
+                        contentType: "application/json; charset=utf-8",
+
+                        data: JSON.stringify(json),
+
+                        success: function (data) {
+
+
+                            //$("#StudentDetails").empty();
+                            $("#studentDetails").empty();
+                            //$("#studentDetails").append('<option value="">--Select--</option>');
+
+
+                            $.each(data, function (key, value) {
+
+                               // $("#studentDetails").append('<option value=' + value.Id + '>' + value.Name + '</option>');
+                               $("#CourseDetails").append('<tr> <td> Name </td> <td> ' + value.Name + ' </td> </tr> ' +
+                                   '<tr> <td> Email </td> <td>' + value.Email + '</td>  </tr>' +
+                                   ' <tr> <td> Department </td> <td>' + value.Department + '</td>  </tr>')
+                            });
+
+                        }
+
+
+                    });
+                });
+
+            });
+
+    </script>
+
+
+
+
+
+
+</div>
+</body>
+</html>

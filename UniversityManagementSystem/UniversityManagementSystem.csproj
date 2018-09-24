@@ -162,6 +162,7 @@
     <Compile Include="Controllers\AllocateClassroomController.cs" />
     <Compile Include="Controllers\CourseToTeacherController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\EnrollCourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegisterStudentController.cs" />
     <Compile Include="Controllers\SaveCourseController.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Gateway\CommonGateway.cs" />
     <Compile Include="Gateway\CourseToTeacherGateway.cs" />
     <Compile Include="Gateway\DepartmentGateway.cs" />
+    <Compile Include="Gateway\EnrollCourseGateway.cs" />
     <Compile Include="Gateway\RegisterStudentGateway.cs" />
     <Compile Include="Gateway\SaveCourseGateway.cs" />
     <Compile Include="Gateway\SaveTeacherGateway.cs" />
@@ -182,11 +184,13 @@
     <Compile Include="Manger\AllocateClassroomManager.cs" />
     <Compile Include="Manger\CourseToTeacherManager.cs" />
     <Compile Include="Manger\DepartmentManager.cs" />
+    <Compile Include="Manger\EnrollCoursesManager.cs" />
     <Compile Include="Manger\RegisterStudentManager.cs" />
     <Compile Include="Manger\SaveCourseManager.cs" />
     <Compile Include="Manger\SaveTeacherManager.cs" />
     <Compile Include="Manger\ViewCourseStaticsManager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EnrollCourseModel.cs" />
     <Compile Include="Models\ViewModel\CourseViewModel.cs" />
     <Compile Include="Models\AllocateClassroomModel.cs" />
     <Compile Include="Models\CourseToTeacherModel.cs" />
@@ -198,6 +202,7 @@
     <Compile Include="Models\ViewModel\DayViewModel.cs" />
     <Compile Include="Models\ViewModel\RoomViewModel.cs" />
     <Compile Include="Models\ViewModel\DesignationViewModel.cs" />
+    <Compile Include="Models\ViewModel\StudentCourseViewModel.cs" />
     <Compile Include="Models\ViewModel\TeacherViewModel.cs" />
     <Compile Include="Models\ViewModel\SemesterViewModel.cs" />
     <Compile Include="Models\ViewModel\ViewCourseViewModel.cs" />
@@ -207,6 +212,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery.timepicker.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -217,6 +223,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.timepicker.js" />
+    <Content Include="Scripts\jquery.timepicker.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -258,6 +266,7 @@
     <Content Include="Views\RegisterStudent\Save.cshtml" />
     <Content Include="Views\ViewCourseStatics\ViewCourse.cshtml" />
     <Content Include="Views\AllocateClassroom\Allocate.cshtml" />
+    <Content Include="Views\EnrollCourse\Enroll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,6 +12,37 @@ namespace UniversityManagementSystem.Gateway
     {
 
 
+
+
+
+
+        public bool IsRoomFree(int dayId, int roomId, string fromTime, string toTime)
+        {
+            query =
+                "SELECT * FROM AllocateClassroomTable WHERE DayId='"+dayId+"' " +
+                "AND RoomId= '"+roomId+"' " +
+                "AND (FromTime BETWEEN '"+fromTime+"' AND '"+toTime+"') " +
+                "OR (ToTime BETWEEN '" + fromTime + "' AND '"+toTime+"' )";
+
+
+            Command = new SqlCommand(query,Connection);
+
+
+            Connection.Open();
+            Reader = Command.ExecuteReader();
+            bool check = Reader.HasRows;
+            Connection.Close();
+            return check;
+        }
+
+
+
+
+
+
+        //---------------------------------------------------------------------------------//
+
+
         public int Allocate(AllocateClassroomModel allocateClassroom)
         {
             query =

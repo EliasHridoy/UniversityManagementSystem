@@ -20,6 +20,17 @@ namespace UniversityManagementSystem.Manger
         }
         //----------------------------------------------------------------//
 
+        public bool IsRoomFree(int dayId,int roomId, string fromTime, string toTime)
+        {
+            return allocateClassroomGateway.IsRoomFree(dayId, roomId, fromTime, toTime);
+        }
+
+
+
+
+
+        //----------------------------------------------------------------//
+
         public string Allocate(AllocateClassroomModel allocateClassroom)
         {
             int rowEffect = allocateClassroomGateway.Allocate(allocateClassroom);
