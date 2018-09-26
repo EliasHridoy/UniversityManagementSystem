@@ -9,34 +9,41 @@ using UniversityManagementSystem.Models.ViewModel;
 
 namespace UniversityManagementSystem.Controllers
 {
-    public class EnrollCourseController : Controller
+    public class StudentRsultController : Controller
     {
         private EnrollCoursesManager enrollCoursesManager;
+        private StudentResultManager studentResultManager;
 
-        public EnrollCourseController() // Constructor
+        public StudentRsultController()
         {
             enrollCoursesManager = new EnrollCoursesManager();
+            studentResultManager = new StudentResultManager();
         }
+        
 
         [HttpGet]
-        public ActionResult Enroll()
+        public ActionResult Save()
         {
             ViewBag.studentRegNos = enrollCoursesManager.RegNoDropdown();
+            ViewBag.gradeLetter = studentResultManager.GradeLetter();
 
             return View();
         }
+
         [HttpPost]
-        public ActionResult Enroll(EnrollCourseModel enrollcourse)
+        public ActionResult Save(StudentResultModel studentResult)
         {
             ViewBag.studentRegNos = enrollCoursesManager.RegNoDropdown();
+            ViewBag.gradeLetter = studentResultManager.GradeLetter();
 
-           
 
-
-            ViewBag.message = enrollCoursesManager.Enroll(enrollcourse);
+            ViewBag.message = studentResultManager.Save(studentResult);
 
             return View();
         }
+
+
+
 
         public JsonResult StudentById(int studentId)
         {
@@ -47,10 +54,9 @@ namespace UniversityManagementSystem.Controllers
 
         public JsonResult Courses(int studentId)
         {
-            List<EnrollCourseModel> courses = enrollCoursesManager.Courses(studentId);
+            List<EnrollCourseModel> courses = studentResultManager.Courses(studentId);
 
             return Json(courses);
         }
-
 	}
 }

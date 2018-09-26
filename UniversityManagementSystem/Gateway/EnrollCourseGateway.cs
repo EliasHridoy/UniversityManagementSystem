@@ -16,12 +16,13 @@ namespace UniversityManagementSystem.Gateway
          //-----------------------------------------------------------
 
 
-        public List<EnrollCourseModel> Courses(int departmentId)
+        public List<EnrollCourseModel> Courses(int studentId)
         {
 
-            query = "SELECT * FROM SaveCoursesTable WHERE DepartmentId=" + departmentId;
+            query = "SELECT * FROM EnrollCourseView where studentId=" + studentId;
 
-            Command = new SqlCommand(query,Connection);
+            Command = new SqlCommand(query, Connection);
+
             List<EnrollCourseModel> CourseList = new List<EnrollCourseModel>();
 
             Connection.Open();

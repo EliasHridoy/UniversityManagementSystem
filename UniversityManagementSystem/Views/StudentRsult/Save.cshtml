@@ -1,83 +1,97 @@
 ﻿@using UniversityManagementSystem.Models.ViewModel
 @using UniversityManagementSystem.Models
-@model EnrollCourseModel
+@model StudentResultModel
 @{
     Layout = null;
     List<StudentCourseViewModel> RegNOs = ViewBag.studentRegNos;
+    List<GradeLetterModel> gradeLetters = ViewBag.gradeLetter;
 
     string message = ViewBag.message;
 
 
 }
-
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Enroll</title>
+    <title>Save</title>
 </head>
 <body>
-    <div>
+<div>
 
 
-        @using (@Html.BeginForm())
-        {
-            <table>
+    @using (@Html.BeginForm())
+    {
+        <table>
 
-                <tr>
-                    <td>@Html.Label("Student Reg. No.")</td>
-                    <td>@Html.DropDownList("StudentId", new SelectList(RegNOs, "Id", "RegNo"), "--Select--")</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>@Html.Label("Name")</td>
-                    <td>@Html.TextBox("Name") </td>
-                </tr>
-                <tr>
-                    <td>@Html.Label("Email")</td>
-                    <td>@Html.TextBox("Email") </td>
-                </tr>
-                <tr>
-                    <td>@Html.Label("Department")</td>
-                    <td>@Html.TextBox("DepartmentName")</td>
+            <tr>
+                <td>@Html.Label("Student RegNo")</td>
+                <td>@Html.DropDownList("StudentId", new SelectList(RegNOs, "Id", "RegNo"), "--Select--")</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Name")</td>
+                <td>@Html.TextBox("Name") </td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Email")</td>
+                <td>@Html.TextBox("Email") </td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Department")</td>
+                <td>@Html.TextBox("DepartmentName")</td>
 
-                </tr>
+            </tr>
 
-                <tr>
-                    <td>@Html.Label("Select Course")</td>
-                    <td>
-                        @Html.DropDownList("CourseId", new SelectList(""), "--Select--")
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>@Html.Label("Date")</td>
-                    <td>
-                        <input type="date" id="Date" name="Date" />
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>@message</td>
-                    <td>
-                        <input type="submit" value="Enroll" />
-                    </td>
-                    <td></td>
-                </tr>
+            <tr>
+        <td>@Html.Label("Select Course")</td>
+        <td>
+            @Html.DropDownList("CourseId", new SelectList(""), "--Select--")
+        </td>
+        <td></td>
+    </tr>
+        <tr>
+        <td>@Html.Label("Select Grade")</td>
+        <td>
+            @Html.DropDownList("GradeLetters", new SelectList(gradeLetters,"Id", "GradeLetter"), "--Select--")
+        </td>
+        <td></td>
+    </tr>
+    
+            <tr>
+                <td>@message</td>
+                <td>
+                    <input type="submit" value="Save" />
+                </td>
+                <td></td>
+            </tr>
 
-            </table>
-        }
-
-
-
-
-
-        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        </table>
+    }
 
 
 
-                <script>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+
+    <script>
                     $(document).ready(function () {
 
                             $('#StudentId').change(function () {
@@ -171,13 +185,10 @@
 
                     });
 
-                </script>
+    </script>
 
 
 
 
-
-
-    </div>
 </body>
 </html>

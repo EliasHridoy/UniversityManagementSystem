@@ -1,0 +1,176 @@
+﻿@using UniversityManagementSystem.Models.ViewModel
+@using UniversityManagementSystem.Models
+
+@{
+    Layout = null;
+    List<StudentCourseViewModel> RegNOs = ViewBag.studentRegNos;
+   
+
+    string message = ViewBag.message;
+
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewResult</title>
+</head>
+<body>
+    
+        <div>
+
+
+            @using (@Html.BeginForm())
+            {
+                <table>
+
+                    <tr>
+                        <td>@Html.Label("Student RegNo")</td>
+                        <td>@Html.DropDownList("StudentId", new SelectList(RegNOs, "Id", "RegNo"), "--Select--")</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Name")</td>
+                        <td>@Html.TextBox("Name") </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Email")</td>
+                        <td>@Html.TextBox("Email") </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Department")</td>
+                        <td>@Html.TextBox("DepartmentName")</td>
+
+                    </tr>
+                    <tr>
+                        <td>@message</td>
+                        <td>
+                            <input type="submit" value="Make PDF"/>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                </table>
+
+
+                <table border="1">
+                    <thead>
+                    <tr>
+                        <td>Course Code</td>
+                        <td>Name</td>
+                        <td>Grade</td>
+                    </tr>
+                    </thead>
+
+                    <tbody id="ResultTable">
+                    
+                    </tbody>
+
+                </table>
+                
+                
+            }
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+
+        <script>
+                    $(document).ready(function () {
+
+                            $('#StudentId').change(function () {
+
+                                var StudentId = $('#StudentId').val();
+
+                                var json = { studentId: StudentId };
+
+                                $.ajax({
+                                    type: "POST",
+
+                                    url: '@Url.Action("StudentById", "ViewResult")',
+                                    //url: '/ViewCourse/ViewCourseStatics',
+
+                                    contentType: "application/json; charset=utf-8",
+
+                                    data: JSON.stringify(json),
+
+                                    success: function (data) {
+
+
+                                        //$("#StudentDetails").empty();
+                                        $("#studentDetails").empty();
+                                        //$("#studentDetails").append('<option value="">--Select--</option>');
+                                        
+                                        $("#Name").val(data.Name);
+                                        $("#Email").val(data.Email);
+                                        $("#DepartmentName").val(data.DepartmentName);
+                                        
+                                    }
+
+
+                                });
+                            });
+
+                    });
+
+
+
+                    $(document).ready(function () {
+
+                        $('#StudentId').change(function () {
+
+                            var StudentId = $('#StudentId').val();
+
+                            var json = { studentId: StudentId };
+
+                            $.ajax({
+                                type: "POST",
+
+                                url: '@Url.Action("CoursesResult", "ViewResult")',
+
+
+                                contentType: "application/json; charset=utf-8",
+
+                                data: JSON.stringify(json),
+                                success: function (data) {
+
+                                    $("#ResultTable").empty();
+                                   // $("#ResultTable").append('<option value="">--Select--</option>');
+
+                                    $.each(data, function (key, value) {
+
+                                       // $("#CourseId").append('<option value=' + value.CourseId + '>' + value.CoursesName + '</option>');
+                                        $("#ResultTable").append('<tr> <td> ' + value.CourseCode + ' </td> <td> ' + value.Name + '</td> <td> ' + value.Grade + '</td>   </tr>');
+                                    });
+                                }
+                            });
+                        });
+                    });
+
+        </script>
+
+
+
+
+    </body>
+</html>

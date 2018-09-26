@@ -167,8 +167,10 @@
     <Compile Include="Controllers\RegisterStudentController.cs" />
     <Compile Include="Controllers\SaveCourseController.cs" />
     <Compile Include="Controllers\SaveTeacherController.cs" />
+    <Compile Include="Controllers\StudentRsultController.cs" />
     <Compile Include="Controllers\ViewCourseStaticsController.cs" />
     <Compile Include="Controllers\ViewDepartmentController.cs" />
+    <Compile Include="Controllers\ViewResultController.cs" />
     <Compile Include="Gateway\AllocateClassroomGateway.cs" />
     <Compile Include="Gateway\CommonGateway.cs" />
     <Compile Include="Gateway\CourseToTeacherGateway.cs" />
@@ -177,7 +179,9 @@
     <Compile Include="Gateway\RegisterStudentGateway.cs" />
     <Compile Include="Gateway\SaveCourseGateway.cs" />
     <Compile Include="Gateway\SaveTeacherGateway.cs" />
+    <Compile Include="Gateway\StudentResultGateway.cs" />
     <Compile Include="Gateway\ViewCourseStaticsGateway.cs" />
+    <Compile Include="Gateway\ViewResultGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,9 +192,13 @@
     <Compile Include="Manger\RegisterStudentManager.cs" />
     <Compile Include="Manger\SaveCourseManager.cs" />
     <Compile Include="Manger\SaveTeacherManager.cs" />
+    <Compile Include="Manger\StudentResultManager.cs" />
     <Compile Include="Manger\ViewCourseStaticsManager.cs" />
+    <Compile Include="Manger\ViewResultManager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EnrollCourseModel.cs" />
+    <Compile Include="Models\GradeLetterModel.cs" />
+    <Compile Include="Models\StudentResultModel.cs" />
     <Compile Include="Models\ViewModel\CourseViewModel.cs" />
     <Compile Include="Models\AllocateClassroomModel.cs" />
     <Compile Include="Models\CourseToTeacherModel.cs" />
@@ -206,6 +214,7 @@
     <Compile Include="Models\ViewModel\TeacherViewModel.cs" />
     <Compile Include="Models\ViewModel\SemesterViewModel.cs" />
     <Compile Include="Models\ViewModel\ViewCourseViewModel.cs" />
+    <Compile Include="Models\ViewModel\ViewResultCourseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -267,6 +276,8 @@
     <Content Include="Views\ViewCourseStatics\ViewCourse.cshtml" />
     <Content Include="Views\AllocateClassroom\Allocate.cshtml" />
     <Content Include="Views\EnrollCourse\Enroll.cshtml" />
+    <Content Include="Views\StudentRsult\Save.cshtml" />
+    <Content Include="Views\ViewResult\ViewResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

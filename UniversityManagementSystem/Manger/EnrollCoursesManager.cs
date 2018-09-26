@@ -21,9 +21,9 @@ namespace UniversityManagementSystem.Manger
         //-----------------------------------------------------------
 
 
-        public List<EnrollCourseModel> Courses(int departmentId)
+        public List<EnrollCourseModel> Courses(int studentId)
         {
-            return enrollCourseGateway.Courses(departmentId);
+            return enrollCourseGateway.Courses(studentId);
         }
 
 
