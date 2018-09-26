@@ -28,6 +28,10 @@ namespace UniversityManagementSystem.Gateway
                 result.CourseCode = Reader["Code"].ToString();
                 result.Name = Reader["Name"].ToString();
                 result.Grade = Reader["GradeLetter"].ToString();
+                if (result.Grade == "")
+                {
+                    result.Grade = "Not Graded Yet";
+                }
 
                 resultList.Add(result);
             }

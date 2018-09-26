@@ -168,6 +168,7 @@
     <Compile Include="Controllers\SaveCourseController.cs" />
     <Compile Include="Controllers\SaveTeacherController.cs" />
     <Compile Include="Controllers\StudentRsultController.cs" />
+    <Compile Include="Controllers\ViewClassScheduleController.cs" />
     <Compile Include="Controllers\ViewCourseStaticsController.cs" />
     <Compile Include="Controllers\ViewDepartmentController.cs" />
     <Compile Include="Controllers\ViewResultController.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Gateway\StudentResultGateway.cs" />
     <Compile Include="Gateway\ViewCourseStaticsGateway.cs" />
     <Compile Include="Gateway\ViewResultGateway.cs" />
+    <Compile Include="Gateway\ViewScheduleGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,6 +197,7 @@
     <Compile Include="Manger\StudentResultManager.cs" />
     <Compile Include="Manger\ViewCourseStaticsManager.cs" />
     <Compile Include="Manger\ViewResultManager.cs" />
+    <Compile Include="Manger\ViewScheduleManager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EnrollCourseModel.cs" />
     <Compile Include="Models\GradeLetterModel.cs" />
@@ -215,6 +218,7 @@
     <Compile Include="Models\ViewModel\SemesterViewModel.cs" />
     <Compile Include="Models\ViewModel\ViewCourseViewModel.cs" />
     <Compile Include="Models\ViewModel\ViewResultCourseViewModel.cs" />
+    <Compile Include="Models\ViewModel\ViewScheduleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -278,6 +282,7 @@
     <Content Include="Views\EnrollCourse\Enroll.cshtml" />
     <Content Include="Views\StudentRsult\Save.cshtml" />
     <Content Include="Views\ViewResult\ViewResult.cshtml" />
+    <Content Include="Views\ViewClassSchedule\ViewClassSchedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

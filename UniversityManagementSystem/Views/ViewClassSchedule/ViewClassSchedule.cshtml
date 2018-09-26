@@ -1,0 +1,98 @@
+﻿@using UniversityManagementSystem.Models
+
+@{
+    Layout = null;
+    List<DepartmentModel> departments = ViewBag.departments;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewClassSchedule</title>
+</head>
+<body>
+<div>
+
+    @Html.Label("department")
+    @Html.DropDownList("DepartmentId", new SelectList(departments, "Id", "Code"), "--select--", "0")
+
+
+    <table border="1">
+        <thead>
+        <tr>
+            <td>Course Code</td>
+            <td>Name</td>
+            <td>Schedule Info</td>
+        </tr>
+        </thead>
+
+        <tbody id="scheduleInfo">
+        
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+
+
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+            $(document).ready(function () {
+
+                $('#DepartmentId').change(function () {
+
+                    var departmentId = $('#DepartmentId').val();
+
+                    var json = { departmentId: departmentId };
+
+                    $.ajax({
+                        type: "POST",
+
+                        url: '@Url.Action("ScheduelByDepartmentId", "ViewClassSchedule")',
+                        //url: '/ViewCourse/ViewCourseStatics',
+
+                        contentType: "application/json; charset=utf-8",
+
+                        data: JSON.stringify(json),
+
+                        success: function (data) {
+
+
+                            //$("#StudentDetails").empty();
+                            $("#scheduleInfo").empty();
+                           // $("#CourseId").append('<option value="">--Select--</option>');
+
+
+                            $.each(data, function (key, value) {
+
+                                //$("#CourseId").append('<option value=' + value.Id + '>' + value.Name + '</option>');
+                                $("#scheduleInfo").append('<tr> <td> ' + value.CourseCode + ' </td> <td>' + value.Name + '</td>   <td>' + value.ScheduleInFo + '</td>   </tr>');
+                            });
+
+                        }
+
+
+                    });
+                });
+
+            });
+
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

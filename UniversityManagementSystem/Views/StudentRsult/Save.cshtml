@@ -47,14 +47,14 @@
             <tr>
         <td>@Html.Label("Select Course")</td>
         <td>
-            @Html.DropDownList("CourseId", new SelectList(""), "--Select--")
+            @Html.DropDownList("EnrollCourseId", new SelectList(""), "--Select--")
         </td>
         <td></td>
     </tr>
         <tr>
         <td>@Html.Label("Select Grade")</td>
         <td>
-            @Html.DropDownList("GradeLetters", new SelectList(gradeLetters,"Id", "GradeLetter"), "--Select--")
+            @Html.DropDownList("GradeLetterId", new SelectList(gradeLetters, "Id", "GradeLetter"), "--Select--")
         </td>
         <td></td>
     </tr>
@@ -168,12 +168,12 @@
                                 success: function (data) {
 
 
-                                    $("#CourseId").empty();
-                                    $("#CourseId").append('<option value="">--Select--</option>');
+                                    $("#EnrollCourseId").empty();
+                                    $("#EnrollCourseId").append('<option value="">--Select--</option>');
 
                                     $.each(data, function (key, value) {
 
-                                        $("#CourseId").append('<option value=' + value.CourseId + '>' + value.CoursesName + '</option>');
+                                        $("#EnrollCourseId").append('<option value=' + value.CourseId + '>' + value.CoursesName + '</option>');
 
                                     });
 

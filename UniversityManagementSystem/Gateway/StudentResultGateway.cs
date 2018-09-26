@@ -14,12 +14,12 @@ namespace UniversityManagementSystem.Gateway
 
         public int Save(StudentResultModel studentResult)
         {
-            query = "INSERT INTO StudentResultTable VALUES(@StudentId,@CourseId,@GradeId)";
+            query = "INSERT INTO StudentResultTable VALUES(@CourseId,@GradeId)";
 
             Command = new SqlCommand(query,Connection);
 
-            Command.Parameters.AddWithValue("@StudentId", studentResult.StudentId);
-            Command.Parameters.AddWithValue("@CourseId", studentResult.CourseId);
+            
+            Command.Parameters.AddWithValue("@CourseId", studentResult.EnrollCourseId);
             Command.Parameters.AddWithValue("@GradeId", studentResult.GradeLetterId);
 
 
