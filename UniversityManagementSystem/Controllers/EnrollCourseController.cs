@@ -30,10 +30,16 @@ namespace UniversityManagementSystem.Controllers
         {
             ViewBag.studentRegNos = enrollCoursesManager.RegNoDropdown();
 
-           
 
+            if (enrollCoursesManager.IsCourseAvailable(enrollcourse.StudentId, enrollcourse.CourseId) == false)
+            {
 
-            ViewBag.message = enrollCoursesManager.Enroll(enrollcourse);
+                ViewBag.message = enrollCoursesManager.Enroll(enrollcourse);
+            }
+            else
+            {
+                ViewBag.message = "Already Enrolled This course";
+            }
 
             return View();
         }

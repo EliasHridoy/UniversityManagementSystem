@@ -30,7 +30,20 @@ namespace UniversityManagementSystem.Gateway
         }
 
 
+        public bool IsCodeExists(string Code)
+        {
+            query = "SELECT * FROM SaveCoursesTable WHERE Code=@Code";
 
+            Command = new SqlCommand(query, Connection);
+            Command.Parameters.AddWithValue("@Code", Code);
+
+            Connection.Open();
+            Reader = Command.ExecuteReader();
+            bool hasRows = Reader.HasRows;
+            Connection.Close();
+            return hasRows;
+
+        }
 
 
 

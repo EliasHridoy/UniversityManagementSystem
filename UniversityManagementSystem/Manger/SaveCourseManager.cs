@@ -33,6 +33,13 @@ namespace UniversityManagementSystem.Manger
         }
 
 
+
+        public bool IsCodeExists(string Code)
+        {
+            return saveCourseGateway.IsCodeExists(Code);
+        }
+
+
         public List<DepartmentModel> DepartmentDropDownlist()
         {
             return saveCourseGateway.DepartmentDropDownlist();

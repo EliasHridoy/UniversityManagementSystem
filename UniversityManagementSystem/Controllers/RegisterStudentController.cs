@@ -13,19 +13,16 @@ namespace UniversityManagementSystemApp.Controllers
     {
 
         private RegisterStudentManager registerStudentManager;
-       // private SaveCourseManager studentMannager;
 
         public RegisterStudentController()
         {
             registerStudentManager = new RegisterStudentManager();
-            //studentMannager = new SaveCourseManager();
         }
 
 
         [HttpGet]
         public ActionResult Save()
         {
-           // ViewBag.departments = studentMannager.DepartmentDropDownlist();
             ViewBag.departments = registerStudentManager.GetDepartmentList();
             return View();
         }
@@ -38,13 +35,9 @@ namespace UniversityManagementSystemApp.Controllers
 
             string message = registerStudentManager.Save(registerStudent);
             ViewBag.Message = message;
-            
             return View();
         }
         
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+     
 	}
 }

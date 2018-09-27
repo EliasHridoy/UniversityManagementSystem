@@ -16,8 +16,57 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Save</title>
+    <link href="~/Content/MyDesign/NavBar.css" rel="stylesheet" />
 </head>
 <body>
+
+    <!-- navBar -->
+
+
+    <ul>
+
+
+
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Unassign</a>
+            <div class="dropdown-content">
+                <a href="#">Unassign All Courses </a>
+                <a href="#">Unallocate All Classroom</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Menu</a>
+            <div class="dropdown-content">
+                <a href="http://localhost:3036/RegisterStudent/Save">Register Student</a>
+                <a href="http://localhost:3036/AllocateClassroom/Allocate">Allocate Classroom</a>
+                <a href="http://localhost:3036/ViewClassSchedule/ViewClassSchedule">View Class Schedule and Room</a>
+
+                <a href="http://localhost:3036/EnrollCourse/Enroll"> Enroll In a Course </a>
+                <a href="http://localhost:3036/StudentRsult/Save"> Save Student Result</a>
+                <a href="http://localhost:3036/ViewResult/ViewResult"> View Result </a>
+
+            </div>
+        </li>
+
+
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Category</a>
+            <div class="dropdown-content">
+                <a href="http://localhost:3036/Department/Save">Save Department</a>
+                <a href="http://localhost:3036/ViewDepartment/ViewAllDepartment">View All Department</a>
+                <a href="http://localhost:3036/SaveCourse/Save">Save Course</a>
+                <a href="http://localhost:3036/SaveTeacher/Save">Save Teacher</a>
+                <a href="http://localhost:3036/CourseToTeacher/Save">Course Assign To Teacher</a>
+                <a href="http://localhost:3036/ViewCourseStatics/ViewCourse">View Course Statics</a>
+            </div>
+        </li>
+
+        <li><a href="#">Home</a></li>
+        <li><a href="#">News</a></li>
+    </ul>
+
+    <!-- navBar -->
+
 <div>
 
 
@@ -28,7 +77,7 @@
             <tr>
                 <td>@Html.Label("Student RegNo")</td>
                 <td>@Html.DropDownList("StudentId", new SelectList(RegNOs, "Id", "RegNo"), "--Select--")</td>
-                <td></td>
+                <td>@Html.ValidationMessageFor(x=>x.StudentId)</td>
             </tr>
             <tr>
                 <td>@Html.Label("Name")</td>
@@ -45,24 +94,24 @@
             </tr>
 
             <tr>
-        <td>@Html.Label("Select Course")</td>
-        <td>
-            @Html.DropDownList("EnrollCourseId", new SelectList(""), "--Select--")
-        </td>
-        <td></td>
-    </tr>
-        <tr>
-        <td>@Html.Label("Select Grade")</td>
-        <td>
-            @Html.DropDownList("GradeLetterId", new SelectList(gradeLetters, "Id", "GradeLetter"), "--Select--")
-        </td>
-        <td></td>
-    </tr>
-    
+                <td>@Html.Label("Select Course")</td>
+                <td>
+                    @Html.DropDownList("EnrollCourseId", new SelectList(""), "--Select--")
+                </td>
+                <td>@Html.ValidationMessageFor(x => x.EnrollCourseId)</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Select Grade")</td>
+                <td>
+                    @Html.DropDownList("GradeLetterId", new SelectList(gradeLetters, "Id", "GradeLetter"), "--Select--")
+                </td>
+                <td>@Html.ValidationMessageFor(x => x.GradeLetterId)</td>
+            </tr>
+
             <tr>
                 <td>@message</td>
                 <td>
-                    <input type="submit" value="Save" />
+                    <input type="submit" value="Save"/>
                 </td>
                 <td></td>
             </tr>
@@ -87,108 +136,110 @@
 
 
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
 
 
 
-    <script>
-                    $(document).ready(function () {
+<script>
+    $(document).ready(function() {
 
-                            $('#StudentId').change(function () {
+        $('#StudentId').change(function() {
 
-                                var StudentId = $('#StudentId').val();
+            var StudentId = $('#StudentId').val();
 
-                                var json = { studentId: StudentId };
+            var json = { studentId: StudentId };
 
-                                $.ajax({
-                                    type: "POST",
+            $.ajax({
+                type: "POST",
 
-                                    url: '@Url.Action("StudentById", "EnrollCourse")',
-                                    //url: '/ViewCourse/ViewCourseStatics',
+                url: '@Url.Action("StudentById", "EnrollCourse")',
+                //url: '/ViewCourse/ViewCourseStatics',
 
-                                    contentType: "application/json; charset=utf-8",
+                contentType: "application/json; charset=utf-8",
 
-                                    data: JSON.stringify(json),
+                data: JSON.stringify(json),
 
-                                    success: function (data) {
-
-
-                                        //$("#StudentDetails").empty();
-                                        $("#studentDetails").empty();
-                                        //$("#studentDetails").append('<option value="">--Select--</option>');
+                success: function(data) {
 
 
-                                        //$("#Name").append(data.Name);
-                                        //$("#Email").append(data.Email);
-                                        //$("#DepartmentName").append(data.DepartmentName);
+                    //$("#StudentDetails").empty();
+                    $("#studentDetails").empty();
+                    //$("#studentDetails").append('<option value="">--Select--</option>');
 
 
-                                        $("#Name").val(data.Name);
-                                        $("#Email").val(data.Email);
-                                        $("#DepartmentName").val(data.DepartmentName);
+                    //$("#Name").append(data.Name);
+                    //$("#Email").append(data.Email);
+                    //$("#DepartmentName").append(data.DepartmentName);
 
 
-
-            //$.each(data, function (key, value) {
-
-                                        //   // $("#studentDetails").append('<option value=' + value.Id + '>' + value.Name + '</option>');
-                                        //   $("#CourseDetails").append('<tr> <td> Name </td> <td> ' + value.Name + ' </td> </tr> ' +
-                                        //       '<tr> <td> Email </td> <td>' + value.Email + '</td>  </tr>' +
-                                        //       ' <tr> <td> Department </td> <td>' + value.Department + '</td>  </tr>')
-                                        //});
-
-                                    }
+                    $("#Name").val(data.Name);
+                    $("#Email").val(data.Email);
+                    $("#DepartmentName").val(data.DepartmentName);
 
 
-                                });
-                            });
+//$.each(data, function (key, value) {
 
-                    });
+                    //   // $("#studentDetails").append('<option value=' + value.Id + '>' + value.Name + '</option>');
+                    //   $("#CourseDetails").append('<tr> <td> Name </td> <td> ' + value.Name + ' </td> </tr> ' +
+                    //       '<tr> <td> Email </td> <td>' + value.Email + '</td>  </tr>' +
+                    //       ' <tr> <td> Department </td> <td>' + value.Department + '</td>  </tr>')
+                    //});
 
-
-
-                    $(document).ready(function () {
-
-                        $('#StudentId').change(function () {
-
-                            var StudentId = $('#StudentId').val();
-
-                            var json = { studentId: StudentId };
-
-                            $.ajax({
-                                type: "POST",
-
-                                url: '@Url.Action("Courses", "EnrollCourse")',
+                }
 
 
-                                contentType: "application/json; charset=utf-8",
+            });
+        });
 
-                                data: JSON.stringify(json),
-
-                                success: function (data) {
-
-
-                                    $("#EnrollCourseId").empty();
-                                    $("#EnrollCourseId").append('<option value="">--Select--</option>');
-
-                                    $.each(data, function (key, value) {
-
-                                        $("#EnrollCourseId").append('<option value=' + value.CourseId + '>' + value.CoursesName + '</option>');
-
-                                    });
-
-                                }
+    });
 
 
-                            });
-                        });
+    $(document).ready(function() {
+
+        $('#StudentId').change(function() {
+
+            var StudentId = $('#StudentId').val();
+
+            var json = { studentId: StudentId };
+
+            $.ajax({
+                type: "POST",
+
+                url: '@Url.Action("Courses", "EnrollCourse")',
+
+
+                contentType: "application/json; charset=utf-8",
+
+                data: JSON.stringify(json),
+
+                success: function(data) {
+
+
+                    $("#EnrollCourseId").empty();
+                    $("#EnrollCourseId").append('<option value="">--Select--</option>');
+
+                    $.each(data, function(key, value) {
+
+                        $("#EnrollCourseId").append('<option value=' + value.CourseId + '>' + value.CoursesName + '</option>');
 
                     });
 
-    </script>
+                }
+
+
+            });
+        });
+
+    });
+
+</script>
 
 
 
+
+<script src="~/Scripts/jquery-1.12.4.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
 </body>
 </html>

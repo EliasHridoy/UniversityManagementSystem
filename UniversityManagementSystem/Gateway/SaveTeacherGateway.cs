@@ -15,7 +15,7 @@ namespace UniversityManagementSystem.Gateway
 
         public int Save(SaveTeacherModel teacher)
         {
-            query = "INSERT INTO TeacherTable VALUES(@Name,@Address,@Email,@ContactNo,@DesignationId,@DepartmentID,@Credit)";
+            query = "INSERT INTO TeacherTable VALUES(@Name,@Address,@Email,@ContactNo,@DesignationId,@DepartmentID,@Credit,0)";
             Command = new SqlCommand(query, Connection);
             Command.Parameters.AddWithValue("@Address", teacher.Address);
             Command.Parameters.AddWithValue("@Name", teacher.Name);

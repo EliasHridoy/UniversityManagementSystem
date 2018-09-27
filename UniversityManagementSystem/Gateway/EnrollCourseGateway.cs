@@ -47,7 +47,7 @@ namespace UniversityManagementSystem.Gateway
 
         public int Enroll(EnrollCourseModel student)
         {
-            query = "INSERT INTO EnrollCourseTable VALUES(@studentId,@courseId,@date)";
+            query = "INSERT INTO EnrollCourseTable VALUES(@studentId,@courseId,@date,1)";
 
             Command = new SqlCommand(query,Connection);
 
@@ -64,6 +64,26 @@ namespace UniversityManagementSystem.Gateway
         }
 
         
+
+        //-------------------------------------------------------------------------
+
+        public bool IsCourseAvailable(int studentId, int courseId)
+        {
+            query = "SELECT * FROM EnrollCourseTable WHERE studentId='"+studentId+"' AND courseId= '"+courseId+"'  ";
+            Command = new SqlCommand(query,Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+            bool check = Reader.HasRows;
+            Reader.Close();
+            Connection.Close();
+            return check;
+            ;
+        }
+
+
+
 
         //-------------------------------------------------------------------------
         public List<StudentCourseViewModel> RegNoDropdown()

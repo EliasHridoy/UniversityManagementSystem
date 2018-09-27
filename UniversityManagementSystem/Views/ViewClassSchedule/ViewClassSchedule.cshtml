@@ -11,8 +11,56 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>ViewClassSchedule</title>
+    <link href="~/Content/MyDesign/NavBar.css" rel="stylesheet" />
 </head>
 <body>
+    <!-- navBar -->
+
+
+    <ul>
+
+
+
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Unassign</a>
+            <div class="dropdown-content">
+                <a href="#">Unassign All Courses </a>
+                <a href="#">Unallocate All Classroom</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Menu</a>
+            <div class="dropdown-content">
+                <a href="http://localhost:3036/RegisterStudent/Save">Register Student</a>
+                <a href="http://localhost:3036/AllocateClassroom/Allocate">Allocate Classroom</a>
+                <a href="http://localhost:3036/ViewClassSchedule/ViewClassSchedule">View Class Schedule and Room</a>
+
+                <a href="http://localhost:3036/EnrollCourse/Enroll"> Enroll In a Course </a>
+                <a href="http://localhost:3036/StudentRsult/Save"> Save Student Result</a>
+                <a href="http://localhost:3036/ViewResult/ViewResult"> View Result </a>
+
+            </div>
+        </li>
+
+
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Category</a>
+            <div class="dropdown-content">
+                <a href="http://localhost:3036/Department/Save">Save Department</a>
+                <a href="http://localhost:3036/ViewDepartment/ViewAllDepartment">View All Department</a>
+                <a href="http://localhost:3036/SaveCourse/Save">Save Course</a>
+                <a href="http://localhost:3036/SaveTeacher/Save">Save Teacher</a>
+                <a href="http://localhost:3036/CourseToTeacher/Save">Course Assign To Teacher</a>
+                <a href="http://localhost:3036/ViewCourseStatics/ViewCourse">View Course Statics</a>
+            </div>
+        </li>
+
+        <li><a href="#">Home</a></li>
+        <li><a href="#">News</a></li>
+    </ul>
+
+    <!-- navBar -->
+
 <div>
 
     @Html.Label("department")
@@ -29,7 +77,7 @@
         </thead>
 
         <tbody id="scheduleInfo">
-        
+
         </tbody>
     </table>
 
@@ -42,52 +90,56 @@
 
 
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script>
-            $(document).ready(function () {
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script>
+    $(document).ready(function() {
 
-                $('#DepartmentId').change(function () {
+        $('#DepartmentId').change(function() {
 
-                    var departmentId = $('#DepartmentId').val();
+            var departmentId = $('#DepartmentId').val();
 
-                    var json = { departmentId: departmentId };
+            var json = { departmentId: departmentId };
 
-                    $.ajax({
-                        type: "POST",
+            $.ajax({
+                type: "POST",
 
-                        url: '@Url.Action("ScheduelByDepartmentId", "ViewClassSchedule")',
-                        //url: '/ViewCourse/ViewCourseStatics',
+                url: '@Url.Action("ScheduelByDepartmentId", "ViewClassSchedule")',
+                //url: '/ViewCourse/ViewCourseStatics',
 
-                        contentType: "application/json; charset=utf-8",
+                contentType: "application/json; charset=utf-8",
 
-                        data: JSON.stringify(json),
+                data: JSON.stringify(json),
 
-                        success: function (data) {
-
-
-                            //$("#StudentDetails").empty();
-                            $("#scheduleInfo").empty();
-                           // $("#CourseId").append('<option value="">--Select--</option>');
+                success: function(data) {
 
 
-                            $.each(data, function (key, value) {
-
-                                //$("#CourseId").append('<option value=' + value.Id + '>' + value.Name + '</option>');
-                                $("#scheduleInfo").append('<tr> <td> ' + value.CourseCode + ' </td> <td>' + value.Name + '</td>   <td>' + value.ScheduleInFo + '</td>   </tr>');
-                            });
-
-                        }
+                    //$("#StudentDetails").empty();
+                    $("#scheduleInfo").empty();
+                    // $("#CourseId").append('<option value="">--Select--</option>');
 
 
+                    $.each(data, function(key, value) {
+
+                        //$("#CourseId").append('<option value=' + value.Id + '>' + value.Name + '</option>');
+                        $("#scheduleInfo").append('<tr> <td> ' + value.CourseCode + ' </td> <td>' + value.Name + '</td>   <td>' + value.ScheduleInFo + '</td>   </tr>');
                     });
-                });
+
+                }
+
 
             });
+        });
 
-    </script>
+    });
+
+</script>
 
 
 
+
+<script src="~/Scripts/jquery-1.12.4.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
 
 

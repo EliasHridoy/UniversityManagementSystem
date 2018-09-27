@@ -37,10 +37,18 @@ namespace UniversityManagementSystem.Controllers
             ViewBag.departments = saveCourseManager.DepartmentDropDownlist();
             ViewBag.semesters = saveCourseManager.SemesterDropDownlist();
 
-            ViewBag.message = saveCourseManager.Save(course);
-
+            if (saveCourseManager.IsCodeExists(course.Code) == false)
+            {
+                ViewBag.message = saveCourseManager.Save(course);
+            }
+            else
+            {
+                ViewBag.message = "Already Exist";
+            }
 
             return View();
         }
+
+        
 	}
 }

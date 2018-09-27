@@ -30,7 +30,7 @@ namespace UniversityManagementSystem.Gateway
 
 
 
-            query = "INSERT INTO CourseToTeacherTable VALUES('"+courseToTeacher.TeacherId+"', '"+courseToTeacher.CourseId+"')";
+            query = "INSERT INTO CourseToTeacher VALUES('"+courseToTeacher.TeacherId+"', '"+courseToTeacher.CourseId+"',1)";
             Command = new SqlCommand(query,Connection);
             if (rowEffect > 0)
             {
@@ -49,7 +49,7 @@ namespace UniversityManagementSystem.Gateway
 
         public bool IsCoursAssigned(int courseId)
         {
-            query ="SELECT * FROM CourseToTeacherTable WHERE CourseID="+courseId;
+            query ="SELECT * FROM CourseToTeacher WHERE CourseID="+courseId;
             Command = new SqlCommand(query,Connection);
 
             Connection.Open();

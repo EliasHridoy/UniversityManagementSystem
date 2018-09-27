@@ -64,7 +64,7 @@ namespace UniversityManagementSystem.Gateway
         public List<EnrollCourseModel> Courses(int studentId)
         {
 
-            query = "SELECT * FROM ResultCourseView where studentId=" + studentId;
+            query = "SELECT * FROM ResultCourseView where studentId=" + studentId +"AND Assigned=1";
 
             Command = new SqlCommand(query, Connection);
 

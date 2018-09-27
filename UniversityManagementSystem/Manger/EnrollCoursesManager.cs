@@ -21,6 +21,17 @@ namespace UniversityManagementSystem.Manger
         //-----------------------------------------------------------
 
 
+
+        public bool IsCourseAvailable(int studentId, int courseId)
+        {
+            return enrollCourseGateway.IsCourseAvailable(studentId, courseId);
+
+
+        }
+
+        //-----------------------------------------------------------
+
+
         public List<EnrollCourseModel> Courses(int studentId)
         {
             return enrollCourseGateway.Courses(studentId);

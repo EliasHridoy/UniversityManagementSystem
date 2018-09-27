@@ -14,7 +14,7 @@ namespace UniversityManagementSystem.Gateway
 
         public List<ViewResultCourseViewModel> CoursesResult(int studentId)
         {
-            query = "SELECT * FROM ViewResultView WHERE studentId="+studentId;
+            query = "SELECT * FROM ViewResultView WHERE studentId="+studentId +"AND Assigned=1" ;
             Command = new SqlCommand(query, Connection);
 
             List<ViewResultCourseViewModel> resultList = new List<ViewResultCourseViewModel>();
