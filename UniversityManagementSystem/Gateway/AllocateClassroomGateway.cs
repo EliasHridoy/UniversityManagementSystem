@@ -47,7 +47,7 @@ namespace UniversityManagementSystem.Gateway
         {
             query =
                 "INSERT INTO AllocateClassroomTable " +
-                "VALUES(@departmentId,@courseId,@roomId,@dayId,@fromTime,@toTime)";
+                "VALUES(@departmentId,@courseId,@roomId,@dayId,@fromTime,@toTime,1)";
 
             Command = new SqlCommand(query,Connection);
             Command.Parameters.AddWithValue("@departmentId", allocateClassroom.DepartmentId);

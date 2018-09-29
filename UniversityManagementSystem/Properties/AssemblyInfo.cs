@@ -33,3 +33,8 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+//------------------developer Info--------------------------------------------//
+//eliashridoy.cse@gmail.com
+// github.com/eliashridoy
+//20/09/2018

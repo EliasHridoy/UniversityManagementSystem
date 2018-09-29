@@ -37,7 +37,7 @@ namespace UniversityManagementSystem.Gateway
             foreach (ViewScheduleViewModel schedule in ScheduleList)
             {
 
-                query = "SELECT * FROM ViewClassSchedule WHERE CourseId=" + schedule.CourseId;
+                query = "SELECT * FROM ViewClassSchedule WHERE CourseId=" + schedule.CourseId + "AND Allocate=1";
 
                 Command = new SqlCommand(query, Connection);
 
