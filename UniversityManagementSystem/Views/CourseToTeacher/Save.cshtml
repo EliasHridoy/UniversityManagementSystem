@@ -1,17 +1,17 @@
 ﻿@using System.ServiceModel.Channels
 @using UniversityManagementSystem.Models
 @model CourseToTeacherModel
-    @{
-        Layout = "~/Views/Shared/_LayoutMasterPage.cshtml";
+@{
+    Layout = "~/Views/Shared/_LayoutMasterPage.cshtml";
 
-        List<DepartmentModel> departments = ViewBag.departments;
-        List<Semester> semesters = ViewBag.semesters;
-        string message = ViewBag.message;
-    }
+    List<DepartmentModel> departments = ViewBag.departments;
+    List<Semester> semesters = ViewBag.semesters;
+    string message = ViewBag.message;
+}
 
-    <div>
+<div>
 
-    @using (@Html.BeginForm(new {id = "SaveCourseForm"}))
+    @using (@Html.BeginForm(new { id = "SaveCourseForm" }))
     {
 
 
@@ -19,7 +19,7 @@
 
             <tr>
                 <td>@Html.Label("Department")</td>
-                <td>@Html.DropDownList("DepartmentId", new SelectList(departments, "Id", "Code"), "--Select--", new {@class = "Textbox1"})</td>
+                <td>@Html.DropDownList("DepartmentId", new SelectList(departments, "Id", "Code"), "--Select--", new { @class = "Textbox1" })</td>
                 <td>@Html.ValidationMessageFor(x => x.DepartmentId)</td>
             </tr>
             <tr>
@@ -30,27 +30,27 @@
             </tr>
             <tr>
                 <td>@Html.Label("Credit")</td>
-                <td>@Html.TextBox("Credit", "", new { @readonly = true ,@class="Textbox1" }  )</td>
+                <td>@Html.TextBox("Credit", "", new { @readonly = true, @class = "Textbox1" })</td>
 
             </tr>
             <tr>
                 <td>@Html.Label("Remainig Credit")</td>
-                <td>@Html.TextBox("RemainigCredit" , "", new {  @readonly = true,@class="Textbox1" })</td>
+                <td>@Html.TextBox("RemainigCredit", "", new { @readonly = true, @class = "Textbox1" })</td>
             </tr>
 
             <tr>
                 <td>@Html.Label("Course")</td>
-                <td>@Html.DropDownList("CourseId", new SelectList(""), "--Select--", new{ @class = "Textbox1" })</td>
+                <td>@Html.DropDownList("CourseId", new SelectList(""), "--Select--", new { @class = "Textbox1" })</td>
                 <td>@Html.ValidationMessageFor(x => x.CourseId)</td>
             </tr>
             <tr>
                 <td>@Html.Label("Name")</td>
-                <td>@Html.TextBox("Name", "", new { @readonly = true, @class="Textbox1" })</td>
-                
+                <td>@Html.TextBox("Name", "", new { @readonly = true, @class = "Textbox1" })</td>
+
             </tr>
             <tr>
                 <td>@Html.Label("Course Credit")</td>
-                <td>@Html.TextBox("CourseCredit", "", new { @readonly = true,@class="Textbox1"  })</td>
+                <td>@Html.TextBox("CourseCredit", "", new { @readonly = true, @class = "Textbox1" })</td>
             </tr>
 
 
@@ -63,7 +63,7 @@
                     }
                 </td>
                 <td>
-                    <input type="submit" value="Assign" class="button0"/>
+                    <input type="submit" id="assign" value="Assign" class="button0" />
                 </td>
             </tr>
         </table>
@@ -76,8 +76,35 @@
     <script src="~/Scripts/jquery-1.12.4.min.js"></script>
     <script>
 
+        $(document).ready(function () {
+            $("#assign").click(function (e) {
 
-        $(document).ready(function() {
+
+                var remainingCredit = $('#RemainigCredit').val();
+                var credit = $('#Credit').val();
+
+                if (remainingCredit > credit) {
+                    if (!window.confirm("Are you sure")) {
+                        e.preventDefault();
+                    }
+                }
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $(document).ready(function () {
 
             $('#DepartmentId').change(function () {
 
@@ -95,7 +122,7 @@
 
                     data: JSON.stringify(json),
 
-                    success: function(data) {
+                    success: function (data) {
 
 
                         //$("#StudentDetails").empty();
@@ -104,7 +131,7 @@
                         $("#TeacherId").append('<option value="">--Select--</option>');
 
 
-                        $.each(data, function(key, value) {
+                        $.each(data, function (key, value) {
 
                             $("#TeacherId").append('<option value=' + value.Id + '>' + value.Name + '</option>');
                             //$("#StudentDetails").append('<tr> <td>'+value.StudentName+'</td>   <td>'+value.Address+'</td>   <td>'+value.DepartmentName+'</td></tr>');
@@ -115,9 +142,9 @@
         });
 
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
-            $('#TeacherId').change(function() {
+            $('#TeacherId').change(function () {
 
                 var TeacherId = $('#TeacherId').val();
 
@@ -133,10 +160,10 @@
 
                     data: JSON.stringify(json),
 
-                    success: function(data) {
+                    success: function (data) {
 
 
-// $("#TeacherId").empty();
+                        // $("#TeacherId").empty();
 
                         //$('#Credit').append(data.Credit);
                         //$('#RemainigCredit').append(data.RemainigCredit);
@@ -151,7 +178,7 @@
         });
 
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             $('#DepartmentId').change(function () {
 
@@ -162,14 +189,14 @@
                 $.ajax({
                     type: "POST",
 
-                   url: '@Url.Action("CourseByDepartmentId", "CourseToTeacher")',
+                    url: '@Url.Action("CourseByDepartmentId", "CourseToTeacher")',
                     //url: '/Department/GetStudentsByDepartmentId',
 
                     contentType: "application/json; charset=utf-8",
 
                     data: JSON.stringify(json),
 
-                    success: function(data) {
+                    success: function (data) {
 
 
                         //$("#StudentDetails").empty();
@@ -178,7 +205,7 @@
                         $("#CourseId").append('<option value="">--Select--</option>');
 
 
-                        $.each(data, function(key, value) {
+                        $.each(data, function (key, value) {
 
                             $("#CourseId").append('<option value=' + value.Id + '>' + value.Code + '</option>');
                             //$("#StudentDetails").append('<tr> <td>'+value.StudentName+'</td>   <td>'+value.Address+'</td>   <td>'+value.DepartmentName+'</td></tr>');
@@ -189,9 +216,9 @@
         });
 
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
-            $('#CourseId').change(function() {
+            $('#CourseId').change(function () {
 
                 var TeacherId = $('#CourseId').val();
 
@@ -207,10 +234,10 @@
 
                     data: JSON.stringify(json),
 
-                    success: function(data) {
+                    success: function (data) {
 
 
-// $("#TeacherId").empty();
+                        // $("#TeacherId").empty();
 
                         //$('#Credit').append(data.Credit);
                         //$('#RemainigCredit').append(data.RemainigCredit);
@@ -231,4 +258,4 @@
     <script src="~/Scripts/jquery-1.12.4.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    </div>
+</div>
