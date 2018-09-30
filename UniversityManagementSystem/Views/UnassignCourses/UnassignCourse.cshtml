@@ -1,31 +1,26 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMasterPage.cshtml"; 
+
+  
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>UnassignCourse</title>
+ 
+    <div>
 
 
-</head>
-<body>
-<div>
+        @using (@Html.BeginForm())
+        {
+
+            <section>
 
 
-    @using (@Html.BeginForm())
-    {
-        
-                
-        
-        <input type="submit" value="Unassign Courses"/>
-    }
+                <h2>@Html.ActionLink("UnassignAllCourse", "UnassignAllCourse") </h2>
+
+
+               
+
+            </section>
+        }
 
 
 
-</div>
-</body>
-</html>
+    </div> 

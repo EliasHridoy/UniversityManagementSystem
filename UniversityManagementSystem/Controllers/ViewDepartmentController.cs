@@ -16,6 +16,7 @@ namespace UniversityManagementSystem.Controllers
 
         public ViewDepartmentController()
         {
+            ViewBag.Title = "View Department";
             departmentManager = new DepartmentManager();
         }
         public ActionResult ViewAllDepartment()

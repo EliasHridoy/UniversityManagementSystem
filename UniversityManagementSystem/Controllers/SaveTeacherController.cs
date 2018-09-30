@@ -18,13 +18,14 @@ namespace UniversityManagementSystem.Controllers
 
         public SaveTeacherController()
         {
+            ViewBag.Title = "Save Teacher";
             saveTeacherManager = new SaveTeacherManager();
         }
 
         [HttpGet]
         public ActionResult Save()
         {
-
+            ViewBag.Title = "Save Teacher";
 
             ViewBag.departments = saveTeacherManager.DepartmentDropDownlist();
             ViewBag.designations = saveTeacherManager.DesignationDropDownList();

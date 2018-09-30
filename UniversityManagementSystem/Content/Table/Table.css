@@ -1,0 +1,56 @@
+﻿
+.NiceTable {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: rgba(175, 171, 171, 0.62);
+    color: black;
+    
+}
+
+.NiceTable th, td {
+    text-align: center;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.NiceTable tr:nth-child(even){background-color: #f2f2f2}
+
+.NiceTable th {
+    background-color: #4CAF50;
+    color: rgba(255, 255, 255, 0.7);
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .NiceTable1 {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.NiceTable1 td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.NiceTable1 tr:nth-child(even){background-color: #f2f2f2;}
+.NiceTable1 tr:hover {background-color: #ddd;}
+
+.NiceTable1 th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}

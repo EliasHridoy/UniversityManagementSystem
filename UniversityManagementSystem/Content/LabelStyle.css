@@ -1,0 +1,22 @@
+﻿
+.Label1 { 
+    
+    font-family: 'Linearicons-Free';
+    display: block;
+    font-size: 1.80em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    color: black;
+}
+.Label2 { 
+    
+    font-family: 'Linearicons-Free';
+    display: block;
+    font-size: 1.80em;
+   
+    font-weight: bold;
+    color: rgb(33, 30, 25);
+}

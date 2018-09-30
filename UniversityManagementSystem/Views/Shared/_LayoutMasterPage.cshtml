@@ -1,20 +1,192 @@
 ﻿<!DOCTYPE html>
-
-<html>
+<html lang="zxx" class="no-js">
 <head>
-    <meta name="viewport" content="width=device-width" />
+
+
+
+
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link href="~/Content/jquery.timepicker.css" rel="stylesheet" />
+
+
+    <link href="~/Content/TextBox.css" rel="stylesheet" />
+
+    <link href="~/Content/Table/Table.css" rel="stylesheet"/>
+
+    <script src="~/Content/MyDesign/main.js"></script>
+    @*<script src="~/Content/MyDesign/jquery-3.2.1.min.js"></script>*@
+    <link href="~/Content/MyDesign/font-awesome.min.css" rel="stylesheet"/>
+    <link href="~/Content/MyDesign/main.css" rel="stylesheet"/>
+
+    <link href="~/Content/LabelStyle.css" rel="stylesheet"/>
+
+    <link href="~/Content/ButtonStyle.css" rel="stylesheet"/>
+
+
+    <meta name="viewport" content="width=device-width"/>
     <title>@ViewBag.Title</title>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/Content/MasterPage/img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="colorlib">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Footer -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Site Title -->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" href="~/Content/MasterPage/css/linearicons.css">
+    <link rel="stylesheet" href="~/Content/MasterPage/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/MasterPage/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/MasterPage/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/MasterPage/css/nice-select.css">
+    <link rel="stylesheet" href="~/Content/MasterPage/css/animate.min.css">
+    <link rel="stylesheet" href="~/Content/MasterPage/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/MasterPage/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/MasterPage/css/main.css">
 </head>
 <body>
-<div>
+    <header id="header" >
+        <!-- <div class="header-top"> -->
+        <!-- <div class="container"> -->
+        <!-- <div class="row"> -->
+        <!-- <div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding"> -->
+        <!-- <ul> -->
+        <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li> -->
+        <!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
+        <!-- <li><a href="#"><i class="fa fa-dribbble"></i></a></li> -->
+        <!-- <li><a href="#"><i class="fa fa-behance"></i></a></li> -->
+        <!-- </ul>			 -->
+        <!-- </div> -->
+        <!-- <div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding"> -->
+        <!-- <a href="mailto:support@colorlib.com"><span class="lnr lnr-envelope"></span> <span class="text">support@universitymanagementsystem.com</span></a>			 -->
+        <!-- </div> -->
+        <!-- </div>			  					 -->
+        <!-- </div> -->
+        <!-- </div> -->
+        <div class="container main-menu">
+            <div class="row align-items-center justify-content-between d-flex">
+                <div id="logo">
+                    <a href="~/index.html"><img src="~/Content/MasterPage/img/logo.png" alt="" title="" /></a>
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li><a href="~/index.html">Home</a></li>
+
+                        <li class="menu-has-children">
+                            <a href="">Department</a>
+                            <ul>
+                                <li><a href="http://localhost:3036/Department/Save">Save Department</a></li>
+                                <li><a href="http://localhost:3036/ViewDepartment/ViewAllDepartment">View Department</a></li>
+                                <li><a href="http://localhost:3036/AllocateClassroom/Allocate"> Allocate Classrooms </a></li>
+                                <li><a href="http://localhost:3036/ViewClassSchedule/ViewClassSchedule">View Class Schedule and Room Allocation </a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="menu-has-children">
+                            <a href="">Course</a>
+                            <ul>
+                                <li><a href="http://localhost:3036/SaveCourse/Save">Save Course</a></li>
+                                <li><a href="http://localhost:3036/ViewCourseStatics/ViewCourse">View Course Statics </a></li>
+                                <li class="menu-has-children">
+                                    <a href="">Course Assign</a>
+                                    <ul>
+                                        <li><a href="http://localhost:3036/CourseToTeacher/Save">Course Assign To Teacher</a></li>
+                                        <li><a href="http://localhost:3036/EnrollCourse/Enroll">Enroll Course</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-has-children">
+                            <a href="">Student</a>
+                            <ul>
+                                <li><a href="http://localhost:3036/RegisterStudent/Save">Register Student</a></li>
+                                <li><a href="http://localhost:3036/StudentRsult/Save">Save Student Result</a></li>
+                                <li><a href="http://localhost:3036/ViewResult/ViewResult">View Result </a></li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-has-children">
+                            <a href="">Teacher</a>
+                            <ul>
+                                <li><a href="http://localhost:3036/SaveTeacher/Save">Save Teacher</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li class="menu-has-children">
+                            <a href="">Unassign</a>
+                            <ul>
+                                <li><a href="http://localhost:3036/UnassignCourses/UnassignCourse">Unassign All Course</a></li>
+                                <li><a href="http://localhost:3036/UnallocateClassroom/Index">Unallocate Classroom</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">About</a></li>
+
+                    </ul>
+                </nav><!-- #nav-menu-container -->
+            </div>
+        </div>
+    </header><!-- #header -->
+
+    <!-- start banner Area -->
+    <section class="banner-area relative about-banner" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        @ViewBag.Title
+                    </h1>
+                    <p class="text-white link-nav"><a href="~/index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="courses.html"> Popular Courses</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner Area -->
+
+
+    <div class="container-contact100" >
+        <div class ="wrap-contact100">
+            
+                @RenderBody()
+            </div>
+        </div>
+
+
+    
 
 
 
-    @RenderBody()
 
 
-
-
-</div>
+    <script src="~/Content/MasterPage/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="~/Content/MasterPage/js/vendor/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    <script src="~/Content/MasterPage/js/easing.min.js"></script>
+    <script src="~/Content/MasterPage/js/hoverIntent.js"></script>
+    <script src="~/Content/MasterPage/js/superfish.min.js"></script>
+    <script src="~/Content/MasterPage/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/Content/MasterPage/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/MasterPage/js/jquery.tabs.min.js"></script>
+    <script src="~/Content/MasterPage/js/jquery.nice-select.min.js"></script>
+    <script src="~/Content/MasterPage/js/owl.carousel.min.js"></script>
+    <script src="~/Content/MasterPage/js/mail-script.js"></script>
+    <script src="~/Content/MasterPage/js/main.js"></script>
 </body>
 </html>

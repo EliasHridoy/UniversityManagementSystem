@@ -1,0 +1,24 @@
+﻿.editor-container {
+
+
+    display: table; width: 100%;
+
+    padding: 100px;
+    margin: 20px;
+
+ }
+.editor-row {
+  width: 100%; display: table-row;
+}
+.editor-label {
+  padding-left: .4em; width: 40%;
+}
+.editor-label, .editor-field {
+   padding-right: .4em; padding-bottom: .2em; padding-top: .2em;
+   display: table-cell;
+ }
+ .curFocus {
+   border: 2px solid #05365b;
+   background-color: #d3e5f2;
+   margin: 3px; padding: 3px;
+  }

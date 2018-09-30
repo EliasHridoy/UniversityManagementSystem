@@ -5,10 +5,10 @@
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
-@font-face {
+/*@font-face {
   font-family: Ubuntu-Bold;
   src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
-}
+}*/
 
 
 
@@ -23,12 +23,12 @@
 
 body, html {
 	height: 100%;
-	font-family: Ubuntu-Bold, sans-serif;
+	/*font-family: Ubuntu-Bold, sans-serif;*/
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Ubuntu-Bold;
+	/*font-family: Ubuntu-Bold;*/
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -53,7 +53,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: Ubuntu-Bold;
+	/*font-family: Ubuntu-Bold;*/
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;

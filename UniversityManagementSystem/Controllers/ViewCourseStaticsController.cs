@@ -27,6 +27,7 @@ namespace UniversityManagementSystem.Controllers
         //[HttpGet]
         public ActionResult ViewCourse()
         {
+            ViewBag.Title = "View Courses";
             ViewBag.departments = registerStudentManager.GetDepartmentList();
             return View();
         }

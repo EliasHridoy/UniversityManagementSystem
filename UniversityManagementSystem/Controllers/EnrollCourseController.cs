@@ -21,6 +21,8 @@ namespace UniversityManagementSystem.Controllers
         [HttpGet]
         public ActionResult Enroll()
         {
+
+            ViewBag.Title = "Enroll Courses";
             ViewBag.studentRegNos = enrollCoursesManager.RegNoDropdown();
 
             return View();
@@ -28,6 +30,9 @@ namespace UniversityManagementSystem.Controllers
         [HttpPost]
         public ActionResult Enroll(EnrollCourseModel enrollcourse)
         {
+
+
+            ViewBag.Title = "Enroll Courses";
             ViewBag.studentRegNos = enrollCoursesManager.RegNoDropdown();
 
 

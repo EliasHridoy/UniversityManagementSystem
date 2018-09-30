@@ -24,6 +24,8 @@ namespace UniversityManagementSystem.Controllers
         [HttpGet]
         public ActionResult Save()
         {
+
+            ViewBag.Title = "Course To Teacher";
             ViewBag.departments = courseToTeacherManager.DepartmentDropdownlist();
 
             return View();
@@ -31,6 +33,8 @@ namespace UniversityManagementSystem.Controllers
         [HttpPost]
         public ActionResult Save(CourseToTeacherModel courseToTeacher)
         {
+
+            ViewBag.Title = "Course To Teacher ";
             ViewBag.departments = courseToTeacherManager.DepartmentDropdownlist();
 
             if (courseToTeacherManager.IsCoursAssigned(courseToTeacher.CourseId) == false)

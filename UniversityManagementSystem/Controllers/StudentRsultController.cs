@@ -24,6 +24,8 @@ namespace UniversityManagementSystem.Controllers
         [HttpGet]
         public ActionResult Save()
         {
+
+            ViewBag.Title = "Save Student Rsult";
             ViewBag.studentRegNos = enrollCoursesManager.RegNoDropdown();
             ViewBag.gradeLetter = studentResultManager.GradeLetter();
 
@@ -36,7 +38,7 @@ namespace UniversityManagementSystem.Controllers
             ViewBag.studentRegNos = enrollCoursesManager.RegNoDropdown();
             ViewBag.gradeLetter = studentResultManager.GradeLetter();
 
-
+            ViewBag.Title = "Save Student Rsult";
             ViewBag.message = studentResultManager.Save(studentResult);
 
             return View();

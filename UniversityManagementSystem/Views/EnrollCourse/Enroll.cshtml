@@ -1,260 +1,532 @@
 ﻿@using UniversityManagementSystem.Models.ViewModel
+
 @using UniversityManagementSystem.Models
+
 @model EnrollCourseModel
+
 @{
+
     Layout = null;
+
     List<StudentCourseViewModel> RegNOs = ViewBag.studentRegNos;
+
+
 
     string message = ViewBag.message;
 
 
+
+
+
 }
+
+
 
 <!DOCTYPE html>
 
+
+
 <html>
+
 <head>
+
     <meta name="viewport" content="width=device-width" />
+
     <title>Enroll</title>
-    <link href="~/Content/MyDesign/NavBar.css" rel="stylesheet"/>
+
+    <link href="~/Content/MyDesign/NavBar.css" rel="stylesheet" />
+
+    <link href="~/Content/ButtonStyle.css" rel="stylesheet" />
+    <link href="~/Content/TextBox.css" rel="stylesheet" />
+
+    <link href="~/Content/MyDesign/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/MyDesign/main.css" rel="stylesheet" />
+    <script src="~/Content/MyDesign/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/MyDesign/main.js"></script>
 
 
-    
+
+
     <link href="~/Content/Datepicker/DatePicker.css" rel="stylesheet" />
 
 
+
+
+
 </head>
+
 <body>
 
+
+
     <!-- navBar -->
+
+
+
 
 
     <ul>
 
 
 
+
+
+
+
         <li class="dropdown">
+
             <a href="javascript:void(0)" class="dropbtn">Unassign</a>
+
             <div class="dropdown-content">
+
                 <a href="#">Unassign All Courses </a>
+
                 <a href="#">Unallocate All Classroom</a>
+
             </div>
+
         </li>
+
         <li class="dropdown">
+
             <a href="javascript:void(0)" class="dropbtn">Menu</a>
+
             <div class="dropdown-content">
+
                 <a href="http://localhost:3036/RegisterStudent/Save">Register Student</a>
+
                 <a href="http://localhost:3036/AllocateClassroom/Allocate">Allocate Classroom</a>
+
                 <a href="http://localhost:3036/ViewClassSchedule/ViewClassSchedule">View Class Schedule and Room</a>
 
+
+
                 <a href="http://localhost:3036/EnrollCourse/Enroll"> Enroll In a Course </a>
+
                 <a href="http://localhost:3036/StudentRsult/Save"> Save Student Result</a>
+
                 <a href="http://localhost:3036/ViewResult/ViewResult"> View Result </a>
 
+
+
             </div>
+
         </li>
+
+
+
 
 
         <li class="dropdown">
+
             <a href="javascript:void(0)" class="dropbtn">Category</a>
+
             <div class="dropdown-content">
+
                 <a href="http://localhost:3036/Department/Save">Save Department</a>
+
                 <a href="http://localhost:3036/ViewDepartment/ViewAllDepartment">View All Department</a>
+
                 <a href="http://localhost:3036/SaveCourse/Save">Save Course</a>
+
                 <a href="http://localhost:3036/SaveTeacher/Save">Save Teacher</a>
+
                 <a href="http://localhost:3036/CourseToTeacher/Save">Course Assign To Teacher</a>
+
                 <a href="http://localhost:3036/ViewCourseStatics/ViewCourse">View Course Statics</a>
+
             </div>
+
         </li>
 
+
+
         <li><a href="#">Home</a></li>
+
         <li><a href="#">News</a></li>
+
     </ul>
+
+
 
     <!-- navBar -->
 
-<div>
 
 
-    @using (@Html.BeginForm())
-    {
-        <table>
 
-            <tr>
-                <td>@Html.Label("Student RegNo")</td>
-                <td>@Html.DropDownList("StudentId", new SelectList(RegNOs, "Id", "RegNo"), "--Select--")</td>
-
-                <td>@Html.ValidationMessageFor(x=>x.StudentId)</td>
-            </tr>
-            <tr>
-                <td>@Html.Label("Name")</td>
-                <td>@Html.TextBox("Name") </td>
-            </tr>
-            <tr>
-                <td>@Html.Label("Email")</td>
-                <td>@Html.TextBox("Email") </td>
-            </tr>
-            <tr>
-                <td>@Html.Label("Department")</td>
-                <td>@Html.TextBox("DepartmentName")</td>
-
-            </tr>
-
-            <tr>
-                <td>@Html.Label("Select Course")</td>
-                <td>
-                    @Html.DropDownList("CourseId", new SelectList(""), "--Select--")
-                </td>
-                <td>@Html.ValidationMessageFor(x => x.CourseId)</td>
-            </tr>
-            <tr>
-                <td>@Html.Label("Date")
-                
-                </td>
-                <td>
-                    @Html.TextBoxFor(x=>x.Date)
-                    @Html.ValidationMessageFor(x => x.Date)
-                </td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>@message</td>
-                <td>
-                    <input type="submit" value="Enroll"/>
-                </td>
-                <td></td>
-            </tr>
-
-        </table>
-    }
+    <div class="container-contact100">
+        <div class="wrap-contact100">
 
 
 
 
 
+            @using (@Html.BeginForm())
+            {
 
-    <script src="~/Scripts/jquery-1.12.4.js"></script>
-
-
-
-    <script>
-        $(document).ready(function() {
-
-            $('#StudentId').change(function() {
-
-                var StudentId = $('#StudentId').val();
-
-                var json = { studentId: StudentId };
-
-                $.ajax({
-                    type: "POST",
-
-                    url: '@Url.Action("StudentById", "EnrollCourse")',
-                    //url: '/ViewCourse/ViewCourseStatics',
-
-                    contentType: "application/json; charset=utf-8",
-
-                    data: JSON.stringify(json),
-
-                    success: function(data) {
+                <table>
 
 
-                        //$("#StudentDetails").empty();
-                        $("#studentDetails").empty();
-                        //$("#studentDetails").append('<option value="">--Select--</option>');
+
+                    <tr>
+
+                        <td>@Html.Label("Student RegNo")</td>
+
+                        <td>@Html.DropDownList("StudentId", new SelectList(RegNOs, "Id", "RegNo"), "--Select--", new { @class="Textbox1"})</td>
 
 
-                        //$("#Name").append(data.Name);
-                        //$("#Email").append(data.Email);
-                        //$("#DepartmentName").append(data.DepartmentName);
+
+                        <td>@Html.ValidationMessageFor(x => x.StudentId)</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>@Html.Label("Name")</td>
+
+                        <td><input type="text" class="Textbox1" id="Name" name="Name" readonly="readonly" /> </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>@Html.Label("Email")</td>
+
+                       
+                        <td>
+                            <input type="text" class="Textbox1" id="Email" name="Email" readonly="readonly"/>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>@Html.Label("Department")</td>
+
+                        <td><input type="text" class="Textbox1" id="DepartmentName" name="DepartmentName" readonly="readonly" /></td>
 
 
-                        $("#Name").val(data.Name);
-                        $("#Email").val(data.Email);
-                        $("#DepartmentName").val(data.DepartmentName);
+
+                    </tr>
 
 
-//$.each(data, function (key, value) {
 
-                        //   // $("#studentDetails").append('<option value=' + value.Id + '>' + value.Name + '</option>');
-                        //   $("#CourseDetails").append('<tr> <td> Name </td> <td> ' + value.Name + ' </td> </tr> ' +
-                        //       '<tr> <td> Email </td> <td>' + value.Email + '</td>  </tr>' +
-                        //       ' <tr> <td> Department </td> <td>' + value.Department + '</td>  </tr>')
-                        //});
+                    <tr>
 
-                    }
+                        <td>@Html.Label("Select Course")</td>
 
+                        <td>
 
-                });
-            });
+                            @Html.DropDownList("CourseId", new SelectList(""), "--Select--", new { @class = "Textbox1" })
 
-        });
+                        </td>
 
+                        <td>@Html.ValidationMessageFor(x => x.CourseId)</td>
 
-        $(document).ready(function() {
+                    </tr>
 
-            $('#StudentId').change(function() {
+                    <tr>
 
-                var StudentId = $('#StudentId').val();
-
-                var json = { studentId: StudentId };
-
-                $.ajax({
-                    type: "POST",
-
-                    url: '@Url.Action("Courses", "EnrollCourse")',
+                        <td>
+                            @Html.Label("Date")
 
 
-                    contentType: "application/json; charset=utf-8",
 
-                    data: JSON.stringify(json),
+                        </td>
 
-                    success: function(data) {
+                        <td>
+
+                            @Html.TextBoxFor(x => x.Date, new { @class = "Textbox1" })
+                        </td>
+
+                        <td>
+                            @Html.ValidationMessageFor(x => x.Date)
+
+                        </td>
+
+                        <td></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>@message</td>
+
+                        <td>
+
+                            <input type="submit" value="Enroll" class="button0" />
+
+                        </td>
+
+                        <td></td>
+
+                    </tr>
 
 
-                        $("#CourseId").empty();
-                        $("#CourseId").append('<option value="">--Select--</option>');
 
-                        $.each(data, function(key, value) {
+                </table>
 
-                            $("#CourseId").append('<option value=' + value.CourseId + '>' + value.CoursesName + '</option>');
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <script src="~/Scripts/jquery-1.12.4.js"></script>
+
+
+
+
+
+
+
+            <script>
+
+                $(document).ready(function () {
+
+
+
+                    $('#StudentId').change(function () {
+
+
+
+                        var StudentId = $('#StudentId').val();
+
+
+
+                        var json = { studentId: StudentId };
+
+
+
+                        $.ajax({
+
+                            type: "POST",
+
+
+
+                            url: '@Url.Action("StudentById", "EnrollCourse")',
+
+                            //url: '/ViewCourse/ViewCourseStatics',
+
+
+
+                            contentType: "application/json; charset=utf-8",
+
+
+
+                            data: JSON.stringify(json),
+
+
+
+                            success: function (data) {
+
+
+
+
+
+                                //$("#StudentDetails").empty();
+
+                                $("#studentDetails").empty();
+
+                                //$("#studentDetails").append('<option value="">--Select--</option>');
+
+
+
+
+
+                                //$("#Name").append(data.Name);
+
+                                //$("#Email").append(data.Email);
+
+                                //$("#DepartmentName").append(data.DepartmentName);
+
+
+
+
+
+                                $("#Name").val(data.Name);
+
+                                $("#Email").val(data.Email);
+
+                                $("#DepartmentName").val(data.DepartmentName);
+
+
+
+
+
+                                //$.each(data, function (key, value) {
+
+
+
+                                //   // $("#studentDetails").append('<option value=' + value.Id + '>' + value.Name + '</option>');
+
+                                //   $("#CourseDetails").append('<tr> <td> Name </td> <td> ' + value.Name + ' </td> </tr> ' +
+
+                                //       '<tr> <td> Email </td> <td>' + value.Email + '</td>  </tr>' +
+
+                                //       ' <tr> <td> Department </td> <td>' + value.Department + '</td>  </tr>')
+
+                                //});
+
+
+
+                            }
+
+
+
+
 
                         });
 
-                    }
+                    });
+
 
 
                 });
-            });
-
-        });
-    </script>
-
-    
-    <script src="~/Scripts/jquery-1.12.4.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
-
-
-
-    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <script>
-
-        $(document).ready(function () {
-            $("#Date").datepicker();
-        });
-
-    </script>
 
 
 
 
 
-   
+                $(document).ready(function () {
 
 
-</div>
+
+                    $('#StudentId').change(function () {
+
+
+
+                        var StudentId = $('#StudentId').val();
+
+
+
+                        var json = { studentId: StudentId };
+
+
+
+                        $.ajax({
+
+                            type: "POST",
+
+
+
+                            url: '@Url.Action("Courses", "EnrollCourse")',
+
+
+
+
+
+                            contentType: "application/json; charset=utf-8",
+
+
+
+                            data: JSON.stringify(json),
+
+
+
+                            success: function (data) {
+
+
+
+
+
+                                $("#CourseId").empty();
+
+                                $("#CourseId").append('<option value="">--Select--</option>');
+
+
+
+                                $.each(data, function (key, value) {
+
+
+
+                                    $("#CourseId").append('<option value=' + value.CourseId + '>' + value.CoursesName + '</option>');
+
+
+
+                                });
+
+
+
+                            }
+
+
+
+
+
+                        });
+
+                    });
+
+
+
+                });
+
+            </script>
+
+
+
+
+
+            <script src="~/Scripts/jquery-1.12.4.js"></script>
+
+            <script src="~/Scripts/jquery.validate.min.js"></script>
+
+            <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+
+
+
+
+
+
+            <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+            <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+            <script>
+
+
+
+                $(document).ready(function () {
+
+                    $("#Date").datepicker();
+
+                });
+
+
+
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        </div>
+
 </body>
+
 </html>

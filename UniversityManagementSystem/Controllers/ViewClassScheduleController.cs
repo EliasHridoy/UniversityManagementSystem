@@ -22,6 +22,7 @@ namespace UniversityManagementSystem.Controllers
         }
         public ActionResult ViewClassSchedule()
         {
+            ViewBag.Title = "View Schedule";
             ViewBag.departments = registerStudentManager.GetDepartmentList();
 
             return View();

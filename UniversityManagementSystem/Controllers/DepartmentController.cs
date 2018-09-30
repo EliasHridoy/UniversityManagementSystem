@@ -21,12 +21,16 @@ namespace UniversityManagementSystem.Controllers
         [HttpGet]
         public ActionResult Save()
         {
+            ViewBag.Title = "Save Department";
             return View();
         }
 
         [HttpPost]
         public ActionResult Save(DepartmentModel department)
         {
+
+
+            ViewBag.Title = "Save Department";
             if (department.Code.Length >= 2 && department.Code.Length <= 7)
             {
                 if (departmentManager.IsCodeExists(department) == false)

@@ -23,6 +23,9 @@ namespace UniversityManagementSystemApp.Controllers
         [HttpGet]
         public ActionResult Save()
         {
+
+
+            ViewBag.Title = "Register Student ";
             ViewBag.departments = registerStudentManager.GetDepartmentList();
             return View();
         }
@@ -30,7 +33,7 @@ namespace UniversityManagementSystemApp.Controllers
         [HttpPost]
         public ActionResult Save(RegisterStudent registerStudent)
         {
-
+            ViewBag.Title = "Register Student ";
             ViewBag.departments = registerStudentManager.GetDepartmentList();
 
             string message = registerStudentManager.Save(registerStudent);

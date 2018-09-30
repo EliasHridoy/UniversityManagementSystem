@@ -3,69 +3,11 @@
 
 @model SaveTeacherModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutMasterPage.cshtml";
     List<DepartmentModel> departments = ViewBag.departments;
     List<DesignationViewModel> designations = ViewBag.designations;
     string message = ViewBag.message;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Save</title>
-    <link href="~/Content/MyDesign/NavBar.css" rel="stylesheet" />
-</head>
-<body>
-
-
-    <!-- navBar -->
-
-
-    <ul>
-
-
-
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Unassign</a>
-            <div class="dropdown-content">
-                <a href="#">Unassign All Courses </a>
-                <a href="#">Unallocate All Classroom</a>
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Menu</a>
-            <div class="dropdown-content">
-                <a href="http://localhost:3036/RegisterStudent/Save">Register Student</a>
-                <a href="http://localhost:3036/AllocateClassroom/Allocate">Allocate Classroom</a>
-                <a href="http://localhost:3036/ViewClassSchedule/ViewClassSchedule">View Class Schedule and Room</a>
-
-                <a href="http://localhost:3036/EnrollCourse/Enroll"> Enroll In a Course </a>
-                <a href="http://localhost:3036/StudentRsult/Save"> Save Student Result</a>
-                <a href="http://localhost:3036/ViewResult/ViewResult"> View Result </a>
-
-            </div>
-        </li>
-
-
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Category</a>
-            <div class="dropdown-content">
-                <a href="http://localhost:3036/Department/Save">Save Department</a>
-                <a href="http://localhost:3036/ViewDepartment/ViewAllDepartment">View All Department</a>
-                <a href="http://localhost:3036/SaveCourse/Save">Save Course</a>
-                <a href="http://localhost:3036/SaveTeacher/Save">Save Teacher</a>
-                <a href="http://localhost:3036/CourseToTeacher/Save">Course Assign To Teacher</a>
-                <a href="http://localhost:3036/ViewCourseStatics/ViewCourse">View Course Statics</a>
-            </div>
-        </li>
-
-        <li><a href="#">Home</a></li>
-        <li><a href="#">News</a></li>
-    </ul>
-
-    <!-- navBar -->
+} 
 
 <div>
 
@@ -77,40 +19,40 @@
         <table>
             <tr>
                 <td>@Html.LabelFor(x => x.Name)</td>
-                <td>@Html.TextBoxFor(x => x.Name)</td>
+                <td>@Html.TextBoxFor(x => x.Name , new {@class="Textbox1"})</td>
                 <td>@Html.ValidationMessageFor(x => x.Name)</td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(x => x.Address)</td>
-                <td>@Html.TextBoxFor(x => x.Address)</td>
+                <td>@Html.TextBoxFor(x => x.Address, new { @class = "Textbox1" })</td>
                 <td>@Html.ValidationMessageFor(x => x.Address)</td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(x => x.Email)</td>
-                <td>@Html.TextBoxFor(x => x.Email)</td>
+                <td>@Html.TextBoxFor(x => x.Email, new { @class = "Textbox1" })</td>
                 <td>@Html.ValidationMessageFor(x => x.Email)</td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(x => x.ContactNo)</td>
-                <td>@Html.TextBoxFor(x => x.ContactNo)</td>
+                <td>@Html.TextBoxFor(x => x.ContactNo, new { @class = "Textbox1" })</td>
                 <td>@Html.ValidationMessageFor(x => x.ContactNo)</td>
             </tr>
 
 
             <tr>
                 <td>@Html.Label("Designation")</td>
-                <td>@Html.DropDownList("DesignationId", new SelectList(designations, "Id", "Name"), "--Select--", "")</td>
+                <td>@Html.DropDownList("DesignationId", new SelectList(designations, "Id", "Name"), "--Select--", new { @class = "Textbox1" })</td>
                 <td>@Html.ValidationMessageFor(x => x.DesignationId)</td>
             </tr>
             <tr>
                 <td>@Html.Label("Department")</td>
-                <td>@Html.DropDownList("DepartmentId", new SelectList(departments, "Id", "Code"), "--Select--", "")</td>
+                <td>@Html.DropDownList("DepartmentId", new SelectList(departments, "Id", "Code"), "--Select--", new { @class = "Textbox1" })</td>
                 <td>@Html.ValidationMessageFor(x => x.DepartmentId)</td>
             </tr>
 
             <tr>
                 <td>@Html.LabelFor(x => x.Credit)</td>
-                <td>@Html.TextBoxFor(x => x.Credit)</td>
+                <td>@Html.TextBoxFor(x => x.Credit, new { @class = "Textbox1" })</td>
                 <td>@Html.ValidationMessageFor(x => x.Credit)</td>
             </tr>
 
@@ -123,7 +65,7 @@
                     }
                 </td>
                 <td>
-                    <input type="submit" value="Save"/>
+                    <input type="submit" value="Save" class="button0"/>
                 </td>
             </tr>
         </table>
@@ -136,6 +78,4 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-</div>
-</body>
-</html>
+</div> 

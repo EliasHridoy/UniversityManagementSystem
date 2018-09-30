@@ -28,6 +28,7 @@ namespace UniversityManagementSystem.Controllers
 
         public ActionResult Allocate()
         {
+            ViewBag.Title = "Allocate Classroom ";
             ViewBag.departments = registerStudentManager.GetDepartmentList();
             ViewBag.rooms = allocateClassroomManager.ViewRoom();
             ViewBag.days = allocateClassroomManager.DayView();
@@ -38,6 +39,7 @@ namespace UniversityManagementSystem.Controllers
 
         public ActionResult Allocate(AllocateClassroomModel allocateClass)
         {
+            ViewBag.Title = "Allocate Classroom";
             ViewBag.departments = registerStudentManager.GetDepartmentList();
             ViewBag.rooms = allocateClassroomManager.ViewRoom();
             ViewBag.days = allocateClassroomManager.DayView();

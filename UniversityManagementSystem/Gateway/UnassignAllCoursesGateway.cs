@@ -10,7 +10,7 @@ namespace UniversityManagementSystem.Gateway
     {
         public int UnassignCourses()
         {
-            query = "UPDATE AllocateClassroomTable SET allocate=1; " ;
+            query = "UPDATE EnrollCourseTable SET Assigned=0; ";
 
             Command = new SqlCommand(query,Connection);
 
@@ -19,7 +19,25 @@ namespace UniversityManagementSystem.Gateway
             
             Connection.Close();
 
+
+            if (rowEffect > 0)
+            {
+
+                query = "UPDATE CourseToTeacher SET Assigned=0; ";
+
+                Command = new SqlCommand(query, Connection);
+
+                Connection.Open();
+                rowEffect = Command.ExecuteNonQuery();
+
+                Connection.Close();
+            }
+
             return rowEffect;
         }
+
+
+
+
     }
 }

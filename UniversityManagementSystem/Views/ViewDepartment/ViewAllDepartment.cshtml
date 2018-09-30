@@ -1,76 +1,19 @@
 ﻿@using UniversityManagementSystem.Models
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutMasterPage.cshtml";
     List<DepartmentModel> departments = ViewBag.departments;
     
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ViewAllDepartment</title>
-    <link href="~/Content/MyDesign/NavBar.css" rel="stylesheet" />
-  
-</head>
-<body>
-    <!-- navBar -->
-
-
-    <ul>
-
-
-
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Unassign</a>
-            <div class="dropdown-content">
-                <a href="#">Unassign All Courses </a>
-                <a href="#">Unallocate All Classroom</a>
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Menu</a>
-            <div class="dropdown-content">
-                <a href="http://localhost:3036/RegisterStudent/Save">Register Student</a>
-                <a href="http://localhost:3036/AllocateClassroom/Allocate">Allocate Classroom</a>
-                <a href="http://localhost:3036/ViewClassSchedule/ViewClassSchedule">View Class Schedule and Room</a>
-
-                <a href="http://localhost:3036/EnrollCourse/Enroll"> Enroll In a Course </a>
-                <a href="http://localhost:3036/StudentRsult/Save"> Save Student Result</a>
-                <a href="http://localhost:3036/ViewResult/ViewResult"> View Result </a>
-
-            </div>
-        </li>
-
-
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Category</a>
-            <div class="dropdown-content">
-                <a href="http://localhost:3036/Department/Save">Save Department</a>
-                <a href="http://localhost:3036/ViewDepartment/ViewAllDepartment">View All Department</a>
-                <a href="http://localhost:3036/SaveCourse/Save">Save Course</a>
-                <a href="http://localhost:3036/SaveTeacher/Save">Save Teacher</a>
-                <a href="http://localhost:3036/CourseToTeacher/Save">Course Assign To Teacher</a>
-                <a href="http://localhost:3036/ViewCourseStatics/ViewCourse">View Course Statics</a>
-            </div>
-        </li>
-
-        <li><a href="#">Home</a></li>
-        <li><a href="#">News</a></li>
-    </ul>
-
-    <!-- navBar -->
-
 <div>
-
-    <table border=1px>
+    <table class="NiceTable">
 
         <thead>
+        
         <tr>
-            <td>Code</td>
-            <td>Name</td>
+            <th>Code</th>
+            <th>Name</th>
         </tr>
         </thead>
         @foreach (DepartmentModel department in departments)
@@ -83,5 +26,3 @@
     </table>
 
 </div>
-</body>
-</html>

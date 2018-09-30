@@ -23,6 +23,8 @@ namespace UniversityManagementSystem.Controllers
         [HttpGet]
         public ActionResult Save()
         {
+
+            ViewBag.Title = "Save Course ";
             ViewBag.departments = saveCourseManager.DepartmentDropDownlist();
             ViewBag.semesters = saveCourseManager.SemesterDropDownlist();
 
@@ -33,7 +35,7 @@ namespace UniversityManagementSystem.Controllers
         [HttpPost]
         public ActionResult Save(SaveCourseModel course)
         {
-
+            ViewBag.Title = "Save Course";
             ViewBag.departments = saveCourseManager.DepartmentDropDownlist();
             ViewBag.semesters = saveCourseManager.SemesterDropDownlist();
 

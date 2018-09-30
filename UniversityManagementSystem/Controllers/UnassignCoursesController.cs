@@ -16,19 +16,23 @@ namespace UniversityManagementSystem.Controllers
 
         public UnassignCoursesController()
         {
+
             unassignAllCoursesManager = new UnassignAllCoursesManager();
         }
 
-        [HttpGet]
+        
         public ActionResult UnassignCourse()
         {
+            ViewBag.Title = "Unassign All Courses";
             return View();
         }
-        [HttpPost]
-        public ActionResult UnassignCourse()
+
+        public ActionResult UnassignAllCourse()
         {
+            ViewBag.Title = "Unassign All Courses";
             ViewBag.message = unassignAllCoursesManager.UnassignCourses();
             return View();
+            
         }
 	}
 }
